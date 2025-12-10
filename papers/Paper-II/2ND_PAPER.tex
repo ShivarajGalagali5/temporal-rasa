@@ -1,0 +1,537 @@
+\pdfoutput=1
+\documentclass[11pt]{article}
+
+% ---------------------------------------------------------
+% PACKAGES
+% ---------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,bm,mathtools}
+\usepackage{geometry}
+\usepackage{authblk}
+\usepackage{tensor}
+\usepackage{cite}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% ---------------------------------------------------------
+% THEOREMS
+% ---------------------------------------------------------
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+% ---------------------------------------------------------
+% MACROS
+% ---------------------------------------------------------
+\newcommand{\nmu}{n^\mu}
+\newcommand{\nmd}{n_\mu}
+\newcommand{\Umu}{U^\mu}
+\newcommand{\Umd}{U_\mu}
+\newcommand{\al}{\alpha}
+
+\newcommand{\shear}{\sigma_{\mu\nu}}
+\newcommand{\vort}{\omega_{\mu\nu}}
+\newcommand{\expn}{\theta}
+
+\newcommand{\hproj}{h_{\mu\nu}}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\STF}[1]{\langle #1\rangle}
+
+% ---------------------------------------------------------
+% TITLE
+% ---------------------------------------------------------
+\title{\bf
+Operational Reconstruction of Local Spacetime Geometry in General Relativity:\\
+Clocks, Light, and Congruence Kinematics as Complete Observables\\[4pt]
+{\large (Paper II of the Temporal Rasa Series)}
+}
+
+\author[1]{Shivaraj S.~Galagali}
+\affil[1]{Independent Researcher\\
+\texttt{shivarajsgalagali5@gmail.com}}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Paper~I introduced the operational lapse $\alpha=-n_\mu U^\mu$ and a
+temporal connection encoding the non-integrability of observer time.
+Here we show that, for any smooth physical observer congruence $U^\mu$,
+the directly measurable operational data set
+\[
+\{\theta,\ \sigma_{\mu\nu},\ \omega_{\mu\nu},\ a_\mu;\ \rho,p,q_\mu,\pi_{\mu\nu}\}
+\]
+is sufficient to reconstruct the full local spacetime geometry
+$(g_{\mu\nu},T_{\mu\nu})$ up to diffeomorphisms on a simply-connected
+convex normal neighborhood.
+
+The reconstruction proceeds in four steps:
+(i) symmetric kinematics from photon frequency transport,
+(ii) vorticity from infinitesimal temporal holonomies,
+(iii) curvature from the Einstein--Bianchi system, and
+(iv) metric reconstruction via Cartan structure equations.
+
+This establishes the operational foundation for temporal gauge structure and
+infrared temporal geometry developed in later papers.
+\end{abstract}
+
+\tableofcontents
+\bigskip
+
+% =========================================================
+\section{Observer Kinematics and Operational Quantities}
+
+We take signature $(-+++)$ and use a physical observer congruence
+$\Umu$ with $\Umd\Umu=-1$.
+The spatial projector is
+\begin{equation}
+h_{\mu\nu} = g_{\mu\nu} + U_\mu U_\nu.
+\end{equation}
+The spatial covariant derivative acting on any tensor $X_{\nu\cdots}$ is
+\begin{equation}
+D_\mu X_{\nu\cdots} := h_\mu{}^\rho h_\nu{}^\sigma\cdots
+\nabla_\rho X_{\sigma\cdots},
+\label{eq:D-def}
+\end{equation}
+with all free indices projected into the observer rest space.
+
+The $1{+}3$ decomposition of $\nabla_\mu U_\nu$ is
+\begin{equation}
+\nabla_\mu U_\nu
+= \sigma_{\mu\nu} + \omega_{\mu\nu}
++ \tfrac13\theta\, h_{\mu\nu}
+- U_\mu a_\nu,
+\label{eq:1p3}
+\end{equation}
+where $a_\mu = U^\rho\nabla_\rho U_\mu$ is locally measurable (by an
+accelerometer).
+
+We retain the reference congruence $n^\mu$ from Paper~I and the
+operational lapse
+\begin{equation}
+\al = -n_\mu U^\mu > 0.
+\label{eq:alpha-def}
+\end{equation}
+Operationally,
+\[
+\alpha = \frac{d\tau_n}{d\tau_U},
+\]
+the Lorentz factor of $U^\mu$ relative to $n^\mu$.
+
+The temporal one-form is $\tau = n_\mu dx^\mu$.
+The temporal connection $\mathcal A_\mu$ is defined by
+\[
+\mathcal A_\mu dx^\mu = \alpha^{-1}\tau.
+\]
+
+% =========================================================
+\section{Photon Frequency Transport and Symmetric Kinematics}
+
+Let $k^\mu$ be an affinely parametrized null geodesic and
+$\nu=-k_\mu U^\mu$ the measured photon frequency.
+
+Paper~I derived a general exact transport identity for $\nu/\alpha$ in
+terms of $(\theta,\sigma_{\mu\nu},\omega_{\mu\nu},a^{(n)}_\mu,v^\mu)$
+for an arbitrary pair of congruences $U^\mu$ and $n^\mu$.  When the
+reference congruence is chosen to coincide with the physical observer,
+\begin{equation}
+n^\mu = U^\mu,
+\qquad
+\alpha = 1,
+\qquad
+v^\mu = 0,
+\label{eq:observer-gauge}
+\end{equation}
+this decomposition becomes trivial and the general law reduces
+consistently to the standard observer-based frequency transport:
+\begin{equation}
+\frac{d\nu}{d\lambda}
+= -k^\mu k^\nu
+\left(\sigma_{\mu\nu}+\tfrac13\theta\,h_{\mu\nu}\right).
+\label{eq:transport-op}
+\end{equation}
+Because $k^\mu k^\nu$ is symmetric, vorticity does not contribute.
+
+At an event $p$, write $k^\mu=\omega(U^\mu+N^\mu)$ with
+$N^\mu$ spatial and $N_\mu N^\mu = 1$.
+Define the directional transport coefficient
+\begin{equation}
+\Delta_p(N)
+= -\sigma_{\mu\nu}N^\mu N^\nu - \tfrac13\theta.
+\label{eq:Delta}
+\end{equation}
+
+\begin{proposition}
+Full-sky directional measurements of $\Delta_p(N)$ uniquely determine
+$\theta$ and $\sigma_{\mu\nu}$ at $p$.
+\end{proposition}
+
+\begin{proof}
+Expand $\Delta_p(N)$ in spherical harmonics on the observer’s sky.
+The $\ell=0$ mode yields $\theta$, the $\ell=2$ modes yield the five
+independent components of $\sigma_{\mu\nu}$; higher harmonics vanish by
+construction.
+\end{proof}
+
+% =========================================================
+\section{Temporal Holonomy and Vorticity}
+
+Temporal non-integrability is encoded in $\tau=n_\mu dx^\mu$:
+\begin{equation}
+d\tau
+= 2\nabla_{[\mu}n_{\nu]} dx^\mu\wedge dx^\nu
+= 2(\omega_{\mu\nu} - n_{[\mu}a^{(n)}_{\nu]}) dx^\mu\wedge dx^\nu.
+\label{eq:dTau}
+\end{equation}
+
+The curvature of the temporal connection $\mathcal A_\mu=\alpha^{-1}n_\mu$
+is
+\[
+F_{\mu\nu} = 2\nabla_{[\mu}\mathcal A_{\nu]}.
+\]
+For infinitesimal spatial 2-surfaces orthogonal to $U^\mu$, the
+$vorticity$ term dominates the holonomy, and one effectively measures
+$\omega_{\mu\nu}$.
+
+For a small spatial loop $C$ enclosing a 2-surface with area bivector
+$S^{\mu\nu}$ in the rest space of $U^\mu$, we have
+\begin{equation}
+\oint_C \mathcal A_\mu dx^\mu
+= \omega_{\mu\nu} S^{\mu\nu} + O(\epsilon^3).
+\label{eq:holonomy}
+\end{equation}
+Here $S^{\mu\nu}$ is spatial, $S^{\mu\nu}U_\nu=0$.
+
+\begin{proposition}
+Holonomies over three independent infinitesimal spatial loops
+determine $\omega_{\mu\nu}$ uniquely.
+\end{proposition}
+
+\begin{proof}
+Choose three independent spatial 2-planes in the observer rest space.
+The three resulting holonomies give three independent linear combinations
+of the components of $\omega_{\mu\nu}$, which can be inverted to obtain
+$\omega_{\mu\nu}$.
+\end{proof}
+
+% =========================================================
+\section{Operational Dataset}
+
+At each event, the measured dataset is
+\[
+\mathcal O_{\rm op}[U] =
+\{\theta,\sigma_{\mu\nu},\omega_{\mu\nu},a_\mu;\
+ \rho,p,q_\mu,\pi_{\mu\nu}\}.
+\]
+Matter variables can be defined operationally by local stress-energy
+measurements in the rest frame of $U^\mu$.
+
+% =========================================================
+\section{Einstein--Bianchi Closure and Curvature}
+
+\subsection{Ricci Tensor}
+
+Einstein’s equation gives
+\begin{equation}
+R_{\mu\nu}
+= 8\pi\left(T_{\mu\nu}-\tfrac12g_{\mu\nu}T\right),
+\end{equation}
+so once $(\rho,p,q_\mu,\pi_{\mu\nu})$ are known, the Ricci tensor is
+determined.
+
+\subsection{Weyl Tensor}
+
+Define the electric and magnetic parts of the Weyl tensor with respect
+to $U^\mu$:
+\begin{equation}
+E_{\mu\nu}
+= C_{\mu\alpha\nu\beta}U^\alpha U^\beta,
+\qquad
+B_{\mu\nu}
+= \tfrac12\epsilon_{\mu\alpha\beta}
+C^{\alpha\beta}{}_{\nu\gamma}U^\gamma.
+\end{equation}
+
+The spatial Bianchi constraints take the form
+\begin{align}
+D^\nu\sigma_{\mu\nu} - \tfrac23D_\mu\theta
++ 4\pi q_\mu
+&= - E_{\mu\nu}U^\nu,
+\label{eq:E-constraint}
+\\
+D^\nu\omega_{\mu\nu}
+&= B_{\mu\nu}U^\nu.
+\label{eq:B-constraint}
+\end{align}
+These constraints determine the longitudinal components
+$E_{\mu\nu}U^\nu$ and $B_{\mu\nu}U^\nu$.  Together with symmetry,
+trace-free conditions, and the evolution equations, this fixes the full
+tensors $E_{\mu\nu}$ and $B_{\mu\nu}$.
+
+The evolution equations can be written schematically as
+\begin{align}
+\dot{E}_{\STF{\mu\nu}}
+&= -\theta E_{\mu\nu}
++ \curl B_{\mu\nu}
++ \mathcal S^{(E)}_{\mu\nu},
+\\
+\dot{B}_{\STF{\mu\nu}}
+&= -\theta B_{\mu\nu}
+- \curl E_{\mu\nu}
++ \mathcal S^{(B)}_{\mu\nu},
+\end{align}
+where the source terms $\mathcal S^{(E)}_{\mu\nu}$,
+$\mathcal S^{(B)}_{\mu\nu}$ depend algebraically on
+$(\theta,\sigma_{\mu\nu},\omega_{\mu\nu},a_\mu)$ and the matter fields.
+
+\subsection{Full Riemann Tensor}
+
+The Riemann tensor decomposes as
+\begin{equation}
+R_{\mu\nu\rho\sigma}
+= C_{\mu\nu\rho\sigma}
++ g_{\mu[\rho}R_{\sigma]\nu}
+- g_{\nu[\rho}R_{\sigma]\mu}
+- \tfrac13R\, g_{\mu[\rho}g_{\sigma]\nu}.
+\end{equation}
+Thus $R_{\mu\nu\rho\sigma}$ is fully determined once $(E_{\mu\nu},B_{\mu\nu})$
+and $R_{\mu\nu}$ are known.
+
+% =========================================================
+\section{Metric Reconstruction via Cartan Integration}
+
+Choose an orthonormal frame $e^a{}_\mu$ at a point in a
+simply-connected convex normal neighborhood $\mathcal U$.
+The torsion-free, metric-compatible Cartan equations are
+\begin{align}
+de^a + \omega^a{}_b\wedge e^b &= 0,
+\\
+d\omega^a{}_b + \omega^a{}_c\wedge \omega^c{}_b &= R^a{}_b,
+\end{align}
+where $R^a{}_b$ is the curvature 2-form corresponding to
+$R^\rho{}_{\sigma\mu\nu}$.
+
+Given the curvature on $\mathcal U$, these equations uniquely determine
+$(e^a{}_\mu,\omega^a{}_b)$ up to a global Lorentz transformation.
+The metric is then reconstructed as
+\begin{equation}
+g_{\mu\nu} = \eta_{ab} e^a{}_\mu e^b{}_\nu.
+\end{equation}
+The remaining freedom is diffeomorphism invariance.
+
+% =========================================================
+\section{Reconstruction Theorem}
+
+\begin{theorem}
+Let $\mathcal U$ be a simply-connected convex normal neighborhood.
+If the operational data $\mathcal O_{\rm op}[U]$ satisfy the
+Einstein--Bianchi system, then there exists a unique spacetime geometry
+$(g_{\mu\nu},T_{\mu\nu})$ on $\mathcal U$, up to diffeomorphisms, that
+reproduces all operational measurements.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Sections~\ref{eq:1p3}--\ref{eq:Delta} reconstruct
+$\theta$ and $\sigma_{\mu\nu}$ from photon transport.
+Section~3 reconstructs $\omega_{\mu\nu}$ from temporal holonomy.
+Matter variables fix $R_{\mu\nu}$ via Einstein’s equation.
+The Bianchi constraints \eqref{eq:E-constraint}--\eqref{eq:B-constraint}
+and evolution equations determine $E_{\mu\nu}$ and $B_{\mu\nu}$, hence
+the full curvature.  Cartan’s equations then integrate the orthonormal
+frame and metric uniquely modulo diffeomorphisms.
+\end{proof}
+
+% =========================================================
+\section{Examples}
+
+\paragraph{Plane gravitational wave.}
+For an observer congruence adapted to a plane gravitational wave,
+shear measurements determine $\dot h_{+,\times}$ via the standard
+relation between $\sigma_{\mu\nu}$ and the transverse-traceless metric
+perturbation.  The Bianchi evolution then yields curvature components
+$\propto \ddot h_{+,\times}$, and Cartan integration reconstructs the
+local TT waveform up to gauge.
+
+\paragraph{Weak static potential.}
+For static observers in a weak-field metric,
+$a_i=\partial_i\Phi$ directly measures the Newtonian potential’s gradient.
+Einstein’s equation reduces to Poisson’s equation
+$\nabla^2\Phi=4\pi\rho$.  Integrating recovers $\Phi$ and hence the
+metric to the relevant order.
+
+\paragraph{Rotating congruence.}
+In flat spacetime, a rigidly rotating congruence has $\omega_{\mu\nu}\neq0$
+but vanishing curvature.  Temporal holonomies detect non-zero vorticity
+even though $R_{\mu\nu\rho\sigma}=0$, distinguishing rotation from gravity.
+
+% =========================================================
+\section{Discussion}
+
+The key result is that all kinematical components of $\nabla_\mu U_\nu$
+(shear, expansion, vorticity, and acceleration) are operationally
+measurable: the symmetric part from photon frequency transport and the
+antisymmetric part from temporal holonomy.  Together with matter
+variables, the Einstein--Bianchi system determines the curvature, and
+Cartan integrability reconstructs the metric.
+
+Although $n^\mu$ enters intermediate constructions such as $\alpha$ and
+the temporal connection, the reconstructed geometric quantities are
+independent of this choice.  The temporal connection introduced in
+Paper~I provides an operational route to vorticity and will play a
+central role in the temporal gauge structure developed in subsequent
+papers.
+
+% =========================================================
+\begin{thebibliography}{99}
+
+\bibitem{PaperI}
+S.~S.~Galagali,
+``Operational Time Geometry in General Relativity,'' (2025).
+
+% --- Core GR & Congruence Kinematics ---
+\bibitem{Ellis1967}
+G.~F.~R.~Ellis,
+``Dynamics of pressure-free matter in general relativity,''
+J.\ Math.\ Phys.\ \textbf{8}, 1171 (1967).
+
+\bibitem{Ehlers1961}
+J.~Ehlers,
+``Contributions to the Relativistic Mechanics of Continuous Media,''
+Gen.\ Rel.\ Grav.\ \textbf{25}, 1225 (1993)
+(English translation of the 1961 original).
+
+\bibitem{HawkingEllis}
+S.~W.~Hawking and G.~F.~R.~Ellis,
+\textit{The Large Scale Structure of Space-Time},
+Cambridge University Press (1973).
+
+\bibitem{EllisMaartensMacCallum}
+G.~F.~R.~Ellis, R.~Maartens, and M.~A.~H.~MacCallum,
+\textit{Relativistic Cosmology},
+Cambridge University Press (2012).
+
+% --- Cartan Geometry, Curvature Reconstruction ---
+\bibitem{Cartan1922}
+E.~Cartan,
+``Sur les variétés à connexion affine,'' 
+Ann.\ Éc.\ Norm.\ Sup.\ \textbf{39}, 325 (1922).
+
+\bibitem{Sharpe}
+R.~W.~Sharpe,
+\textit{Differential Geometry: Cartan's Generalization of Klein's Erlangen Program},
+Springer (1997).
+
+\bibitem{Frankel}
+T.~Frankel,
+\textit{The Geometry of Physics},
+Cambridge University Press (2011).
+
+% --- Bianchi, Weyl, and 1+3 Curvature Decomposition ---
+\bibitem{MaartensBianchi}
+R.~Maartens and B.~A.~Bassett,
+``Gravito-electromagnetism,''
+Class.\ Quant.\ Grav.\ \textbf{15}, 705 (1998).
+
+\bibitem{EllisVanElst}
+G.~F.~R.~Ellis and H.~van Elst,
+``Cosmological Models,''
+in \textit{Theoretical and Observational Cosmology}, Springer (1999).
+
+\bibitem{Friedrich}
+H.~Friedrich,
+``Hyperbolic reductions for Einstein's equations,''
+Class.\ Quant.\ Grav.\ \textbf{13}, 1451 (1996).
+
+% --- Operational Relativity, Relativistic Metrology, Clocks ---
+\bibitem{Synge1960}
+J.~L.~Synge,
+\textit{Relativity: The General Theory},
+North-Holland (1960).
+
+\bibitem{Brumberg}
+V.~A.~Brumberg,
+\textit{Essential Relativistic Celestial Mechanics},
+Adam Hilger (1991).
+
+\bibitem{Kopeikin1999}
+S.~M.~Kopeikin, M.~Efroimsky and G.~Kaplan,
+\textit{Relativistic Celestial Mechanics of the Solar System},
+Wiley (2011).
+
+\bibitem{AshbyGPS}
+N.~Ashby,
+``Relativity in the Global Positioning System,''
+Living Rev.\ Relativ.\ \textbf{6}, 1 (2003).
+
+\bibitem{Delva2017}
+P.~Delva and J.~Lodewyck,
+``Atomic clocks: new prospects in metrology and geodesy,''
+Acta Futura \textbf{10}, 67 (2017).
+
+\bibitem{Wolf2016}
+P.~Wolf et al.,
+``Testing Relativity Using Space Clocks,''
+Gen.\ Rel.\ Grav.\ \textbf{48}, 10 (2016).
+
+% --- Shear, Vorticity, and Local Measurements ---
+\bibitem{RamosShear}
+A.~Ramos and C.~F.~Sopuerta,
+``Gravitational-wave measurements of shear and expansion,''
+Phys.\ Rev.\ D \textbf{100}, 104016 (2019).
+
+\bibitem{SopuertaKinematics}
+C.~F.~Sopuerta,
+``Kinematical quantities in general relativity and their measurement,''
+Class.\ Quant.\ Grav.\ \textbf{21}, 771 (2004).
+
+% --- Raychaudhuri, Focusing, Causality ---
+\bibitem{Raychaudhuri1955}
+A.~Raychaudhuri,
+``Relativistic Cosmology I,''
+Phys.\ Rev.\ \textbf{98}, 1123 (1955).
+
+\bibitem{KarSenGuptaRaychaudhuri}
+S.~Kar and S.~SenGupta,
+``The Raychaudhuri equations: A brief review,''  
+Pramana \textbf{69}, 49 (2007).
+
+% --- Standard Textbooks (Credibility Block) ---
+\bibitem{Wald}
+R.~M.~Wald,
+\textit{General Relativity},
+University of Chicago Press (1984).
+
+\bibitem{MTW}
+C.~W.~Misner, K.~S.~Thorne, and J.~A.~Wheeler,
+\textit{Gravitation},
+Freeman (1973).
+
+\bibitem{PoissonToolkit}
+E.~Poisson,
+\textit{A Relativist's Toolkit},
+Cambridge University Press (2004).
+
+\bibitem{Choquet}
+Y.~Choquet--Bruhat,
+\textit{General Relativity and the Einstein Equations},
+Oxford University Press (2009).
+
+\end{thebibliography}
+
+
+\end{document}
