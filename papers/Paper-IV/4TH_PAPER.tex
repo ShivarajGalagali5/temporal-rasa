@@ -1,0 +1,410 @@
+
+\pdfoutput=1
+\documentclass[11pt]{article}
+
+% --------------------------------------------------------------
+% PACKAGES (ARXIV-SAFE)
+% --------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,bm,mathrsfs,mathtools}
+\usepackage{geometry}
+\usepackage{authblk}
+\usepackage{tensor}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+% --------------------------------------------------------------
+% GLOBAL MACROS
+% --------------------------------------------------------------
+\newcommand{\Umu}{U^\mu}
+\newcommand{\nmu}{n^\mu}
+\newcommand{\al}{\alpha}
+\newcommand{\vort}{\omega_{\mu\nu}}
+\newcommand{\shear}{\sigma_{\mu\nu}}
+\newcommand{\expn}{\theta}
+\newcommand{\hproj}{h_{\mu\nu}}
+
+% theorem envs
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+% --------------------------------------------------------------
+% TITLE
+% --------------------------------------------------------------
+\title{\bf
+Temporal Soft Charges and Memory in Asymptotically Flat Gravity:\\
+Operational Infrared Structure from Clock Holonomy\\[4pt]
+\large (Paper IV of the Temporal Rasa Series)
+}
+
+\author[1]{Shivaraj S.~Galagali}
+\affil[1]{Independent Researcher\\
+\texttt{shivarajsgalagali5@gmail.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% --------------------------------------------------------------
+\begin{abstract}
+Papers~I–III developed an operational description of relativistic time
+based on a timelike reference congruence $n^\mu$, a physical observer
+$U^\mu$, and the measurable scalar $\alpha=-n_\mu U^\mu$.
+Non-integrability of clock transport is encoded in the vorticity
+$\omega_{\mu\nu}$ of $n^\mu$.
+
+Here we analyse the infrared structure of this non-integrability at
+future null infinity $\mathscr I^+$.  Using the covariant temporal
+connection
+\[
+\mathcal A_\mu = \frac{1}{2\alpha}({\star_U}\omega)_\mu,
+\qquad
+({\star_U}\omega)_\mu
+= \tfrac12 \varepsilon_{\mu\nu\rho\sigma}U^\nu \omega^{\rho\sigma},
+\]
+we show that its radiative mode at $\mathscr I^+$ is fixed completely by
+the Bondi shear~$\sigma^0$:
+\[
+\boxed{
+\mathcal A_A^{(0)}
+= \frac14\!\left(\sigma^0 m_A+\bar\sigma^0\bar m_A\right).
+}
+\]
+This is a spin-weight $+1$ projection of gravitational radiation and
+contains no new degrees of freedom.
+
+We define the associated soft symmetry, Wald--Zoupas charge, and the
+resulting ``temporal holonomy memory''.  Only the electric-parity
+component of $\sigma^0$ contributes to the permanent effect.  These
+structures establish the IR completion of the operational time geometry
+developed in Papers~I–III.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ===============================================================
+\section{Introduction}
+
+Papers~I–III introduced an operational time geometry based on:
+\begin{itemize}
+\item a reference congruence $n^\mu$,
+\item a physical observer $U^\mu$,
+\item the observable lapse $\al=-n_\mu U^\mu$,
+\item and the vorticity two-form $\omega_{\mu\nu}$ of $n^\mu$.
+\end{itemize}
+
+Clock transport is path dependent whenever $\omega_{\mu\nu}\neq 0$.
+The resulting temporal connection,
+\[
+\mathcal A_\mu = \frac{1}{2\alpha}({\star_U}\omega)_\mu,
+\]
+encodes this non-integrability.
+
+In asymptotically flat spacetimes, the IR limit of this structure
+projects onto the Bondi radiative data.  Our goals:
+
+\begin{enumerate}
+\item Identify the radiative mode $\mathcal A_A^{(0)}$ at $\mathscr I^+$.
+\item Show it is determined entirely by the shear~$\sigma^0$.
+\item Define the associated soft symmetry and charge.
+\item Derive a ``temporal memory'' in clock holonomy.
+\end{enumerate}
+
+No new fields are introduced; all IR data descend from the gravitational
+shear.
+
+% ===============================================================
+\section{Temporal Connection and Holonomy}
+
+Let $n^\mu$ be a unit timelike congruence and $U^\mu$ a physical
+observer.  The vorticity of $n^\mu$ is
+\[
+\omega_{\mu\nu}
+= h_\mu{}^\rho h_\nu{}^\sigma \nabla_{[\rho}n_{\sigma]},
+\qquad
+h_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu.
+\]
+
+The spatial Hodge dual relative to $U^\mu$ is
+\[
+({\star_U}\omega)_\mu
+= \tfrac12 \varepsilon_{\mu\nu\rho\sigma}U^\nu\omega^{\rho\sigma}.
+\]
+
+\begin{definition}[Temporal connection]
+\[
+\boxed{
+\mathcal A_\mu = \frac{1}{2\al}({\star_U}\omega)_\mu .
+}
+\]
+\end{definition}
+
+For any small loop $C$ in the rest frame of~$U^\mu$,
+\[
+\oint_C \mathcal A_\mu dx^\mu
+= \int_\Sigma \omega_{\mu\nu} dS^{\mu\nu},
+\]
+the vorticity flux first identified in Paper~I.
+
+% ===============================================================
+\section{Asymptotic Structure at $\mathscr I^+$}
+
+Bondi coordinates $(u,r,x^A)$ yield
+\[
+\sigma = \frac{\sigma^0(u,x^A)}{r} + O(r^{-2}),
+\qquad
+m_A = m_\mu \partial_A x^\mu.
+\]
+
+A physically natural asymptotic observer satisfies
+\[
+U^\mu = \frac{\ell^\mu+N^\mu}{\sqrt2} + O(r^{-1}),
+\qquad
+\al=1+O(r^{-1}),
+\]
+and $n^\mu$ aligns with~$\ell^\mu$.
+
+Projecting $\mathcal A_\mu$ to the sphere:
+\[
+\mathcal A_A = \mathcal A_\mu\partial_A x^\mu
+= \frac{1}{r}\mathcal A_A^{(0)} + O(r^{-2}).
+\]
+
+\begin{theorem}[Temporal--shear correspondence]
+\[
+\boxed{
+\mathcal A_A^{(0)}
+= \frac14(\sigma^0 m_A + \bar\sigma^0 \bar m_A).
+}
+\]
+\end{theorem}
+
+This is a spin-weight $+1$ field determined by shear alone.
+
+\paragraph{Properties.}
+\begin{itemize}
+\item No Coulombic ($\ell=0,1$) data contribute.
+\item No new state-dependent function enters; IR data is inherited from $\sigma^0$.
+\item Under $m_A\to e^{i\chi}m_A$, the field transforms with spin~$+1$.
+\end{itemize}
+
+% ===============================================================
+\section{Electric and Magnetic Parity}
+
+Decompose
+\[
+\sigma^0 = \sigma_E^0 + i\sigma_B^0.
+\]
+
+In a real dyad basis $\{e_A^{(1)},e_A^{(2)}\}$ defined through
+$m_A = \tfrac{1}{\sqrt2}(e_A^{(1)}+i e_A^{(2)})$, the radiative mode becomes:
+\[
+\mathcal A_A^{(0)}
+= \frac12 \big[\sigma_E^0\, e_A^{(1)} - \sigma_B^0\, e_A^{(2)}\big].
+\]
+
+Thus:
+\[
+\boxed{
+\mathcal A_A^E \propto \sigma_E^0,
+\qquad
+\mathcal A_A^B \propto \sigma_B^0 .
+}
+\]
+
+Only $\sigma_E^0$ contributes to the permanent memory.
+
+% ===============================================================
+\section{Soft Symmetry and Charge}
+
+At $\mathscr I^+$, define the operational symmetry
+\[
+\delta_\Lambda \mathcal A_A^{(0)} = 0,
+\]
+(no radiative gauge term appears at leading order), and the charge:
+\[
+\boxed{
+Q_\Lambda
+= \frac{1}{32\pi}
+\int_{S^2} \Lambda\, D^A\!\left(\sigma^0 m_A+\bar\sigma^0\bar m_A\right)\! d\Omega .
+}
+\]
+
+Only $\ell\ge2$ modes contribute.  
+The algebra is abelian:
+\[
+\{Q_\Lambda,Q_{\Lambda'}\}=0,
+\qquad
+\{Q_\Lambda,Q_{\xi}^{\rm BMS}\}=0.
+\]
+
+% ===============================================================
+\section{Temporal Memory}
+
+Since $N=\partial_u\sigma^0$,
+\[
+\partial_u\mathcal A_A^{(0)}
+= \frac14(N m_A+\bar N\bar m_A).
+\]
+
+Integrating:
+\[
+\Delta\mathcal A_A^{(0)}
+= \frac14(\Delta\sigma^0 m_A+\Delta\bar\sigma^0\bar m_A).
+\]
+
+The change in a clock holonomy around a loop $C$ is:
+\[
+\boxed{
+\Delta \ln\mathcal H[C]
+= \oint_C \Delta\mathcal A_A^{(0)} dx^A .
+}
+\]
+
+If $\Delta\mathcal A_A^{(0)}=\partial_A f$ (pure gauge), the integral
+vanishes. The permanent temporal memory arises only from the electric
+parity of $\sigma^0$, exactly paralleling E-mode displacement memory.
+
+% ===============================================================
+\section{Observer-Class Invariance}
+
+If $\tilde U^\mu$ is any asymptotically inertial observer:
+\[
+\tilde U^\mu = U^\mu + O(r^{-1}),
+\qquad
+U_\mu\tilde U^\mu=-1+O(r^{-1}),
+\]
+then
+\[
+\tilde{\mathcal A}_A^{(0)} = \mathcal A_A^{(0)}.
+\]
+
+Thus the temporal IR mode is invariant under the standard Bondi class of
+asymptotic inertial observers.
+
+% ===============================================================
+\section{Conclusion}
+
+The operational temporal connection of Papers~I–III acquires a clean
+infrared limit at future null infinity.  The radiative mode
+\[
+\mathcal A_A^{(0)}
+= \frac14(\sigma^0 m_A+\bar\sigma^0\bar m_A)
+\]
+encodes a spin-weight~$+1$ projection of gravitational radiation, defines
+a consistent abelian soft charge, and generates a permanent temporal
+memory proportional to the E-mode shear.
+
+The temporal IR sector contains no new dynamical degrees of freedom: it
+is a physically operational projection of the Bondi shear.  This prepares
+the ground for the temporal information channel and soft entanglement
+developed in Papers~V–VIII.
+
+% ===============================================================
+\appendix
+\section{Derivation of the Asymptotic Formula}
+
+The Bondi--Sachs NP tetrad satisfies
+\[
+\ell^\mu N_\mu=-1,\qquad m^\mu\bar m_\mu=1.
+\]
+
+At large $r$:
+\[
+\ell^\mu=\partial_r+O(r^{-1}),\qquad
+m^\mu=\frac{1}{\sqrt2 r}\hat m^A\partial_A+O(r^{-2}),
+\]
+\[
+\sigma = \frac{\sigma^0}{r}+O(r^{-2}).
+\]
+
+NP torsion identities yield
+\[
+\nabla_{[\mu}\ell_{\nu]}
+=
+-\sigma\,m_{[\mu}m_{\nu]}
+-\bar\sigma\,\bar m_{[\mu}\bar m_{\nu]}
++O(r^{-2}).
+\]
+
+Since $n^\mu\sim \ell^\mu$,
+\[
+\omega_{\mu\nu}
+=
+-\frac{1}{r}
+\left(\sigma^0 m_{[\mu}m_{\nu]}
++\bar\sigma^0\bar m_{[\mu}\bar m_{\nu]}\right)+O(r^{-2}).
+\]
+
+Contract with $U^\nu = (\ell^\nu+N^\nu)/\sqrt2$:
+\[
+\omega_{\nu A}U^\nu
+=
+\frac{1}{2r}
+(\sigma^0 m_A + \bar\sigma^0\bar m_A) + O(r^{-2}).
+\]
+
+Since $\al=1+O(r^{-1})$,
+\[
+\mathcal A_A
+= \frac{1}{2\al}\omega_{\nu A}U^\nu
+= \frac{1}{4r}(\sigma^0 m_A+\bar\sigma^0\bar m_A)
++O(r^{-2}),
+\]
+giving the stated result.
+
+% ===============================================================
+\begin{thebibliography}{99}
+
+\bibitem{PaperI}
+Shivaraj~S.~Galagali,
+``Operational Time Geometry in General Relativity,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17813825}{doi:10.5281/zenodo.17813825}.
+
+\bibitem{PaperII}
+Shivaraj~S.~Galagali,
+``Operational Reconstruction of Local Spacetime Geometry,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17833292}{doi:10.5281/zenodo.17833292}.
+
+\bibitem{PaperIII}
+Shivaraj~S.~Galagali,
+``Newman--Penrose Formulation of the Temporal Connection,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17842271}{doi:10.5281/zenodo.17842271}.
+
+\bibitem{Bondi1962}
+H.~Bondi, M.~van~der~Burg, A.~Metzner,
+Proc.\ Roy.\ Soc.\ A \textbf{269}, 21 (1962).
+
+\bibitem{Sachs1962}
+R.~Sachs,
+Proc.\ Roy.\ Soc.\ A \textbf{270}, 103 (1962).
+
+\bibitem{NP}
+E.~T.~Newman, R.~Penrose,
+J.\ Math.\ Phys.\ \textbf{3}, 566 (1962).
+
+\bibitem{StromingerLectures}
+A.~Strominger,
+\emph{Lectures on the Infrared Structure of Gravity},
+Princeton University Press (2018).
+
+\bibitem{WaldZoupas}
+R.~Wald, A.~Zoupas,
+Phys.\ Rev.\ D \textbf{61}, 084027 (2000).
+
+\end{thebibliography}
+
+\end{document}
