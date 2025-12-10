@@ -1,0 +1,430 @@
+% =========================
+% Paper-V: Temporal Rasa V
+% Final Submission-Ready Version (2025)
+% =========================
+\pdfoutput=1
+\documentclass[11pt]{article}
+
+% --------------------------------------------------------------
+% PACKAGES (arXiv-safe)
+% --------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,bm,mathrsfs,mathtools}
+\usepackage{geometry}
+\usepackage{authblk}
+\usepackage{tensor}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+    pdfauthor={Shivaraj S. Galagali},
+    pdftitle={The Ultraviolet Temporal Sector of General Relativity}
+}
+
+% --------------------------------------------------------------
+% MACROS & NOTATION (consistent with Papers I–IV)
+% --------------------------------------------------------------
+\newcommand{\Umu}{U^\mu}
+\newcommand{\nmu}{n^\mu}
+\newcommand{\al}{\alpha}
+
+\newcommand{\shear}{\sigma_{\mu\nu}}
+\newcommand{\vort}{\omega_{\mu\nu}}
+\newcommand{\expn}{\theta}
+\newcommand{\hproj}{h_{\mu\nu}}
+\newcommand{\ReS}{\operatorname{Re}}
+\newcommand{\ImS}{\operatorname{Im}}
+
+\newcommand{\A}{\mathcal A}
+\newcommand{\F}{\mathcal F}
+\newcommand{\Lie}{\mathcal L}
+
+\newcommand{\kT}{\kappa_{\mathrm T}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+% --------------------------------------------------------------
+% TITLE / AUTHOR
+% --------------------------------------------------------------
+\title{\bf
+The Ultraviolet Temporal Sector of General Relativity\\[4pt]
+Curvature, Dynamics, Linear Response, and Soft Limits\\[4pt]
+\large (Paper V of the Temporal Rasa Series)
+}
+
+
+\author[1]{Shivaraj S.~Galagali,
+\href{https://orcid.org/0009-0005-4383-187X}{\;ORCID}}
+\affil[1]{Independent Researcher\\
+\texttt{shivarajsgalagali5@gmail.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% ===============================================================
+\begin{abstract}
+Papers I--IV of the Temporal Rasa series developed an operational
+time geometry in general relativity based on clock transport,
+vorticity, and the temporal connection
+\[
+\A_\mu
+=
+\frac{1}{4\alpha}\varepsilon_{\mu\nu\rho\sigma}
+U^\nu\omega^{\rho\sigma}
+=
+\frac{1}{2\alpha}({\star_U}\omega)_\mu.
+\]
+Paper~IV identified the infrared (IR) temporal sector at future null
+infinity: the radiative mode $\A_A^{(0)}$ is a spin–1 projection of the
+Bondi shear and defines a temporal soft symmetry, a finite Wald--Zoupas
+charge, and an E-mode temporal memory.
+
+This Paper~V develops the complementary ultraviolet (UV) temporal
+sector: we define the temporal curvature $\F_{\mu\nu}$, derive a
+schematic Weyl--Ricci--kinematical decomposition, obtain a
+Raychaudhuri-type evolution for $\Theta_{\mathrm T}=\nabla_\mu\A^\mu$,
+establish a UV--IR balance law relating bulk temporal curvature to the
+IR soft charge, construct the linear response kernel, and outline the
+associated temporal noise. Projecting the soft graviton theorem yields
+the temporal soft factor and Ward identity. A Kerr illustration is
+included. 
+
+No new dynamical degrees of freedom are introduced. This completes a
+UV/IR operational description of time transport in general relativity.
+
+Altogether Papers I–V form a closed operational kinematical theory of relativistic time transport.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ===============================================================
+\section{Introduction}
+
+The Temporal Rasa framework treats the temporal connection
+\begin{equation}\label{eq:A-def-intro}
+\boxed{
+\A_\mu=
+\frac{1}{4\alpha}
+\varepsilon_{\mu\nu\rho\sigma}U^\nu\omega^{\rho\sigma}
+=
+\frac{1}{2\alpha}({\star_U}\omega)_\mu,
+}
+\end{equation}
+as the operational encoding of clock-transport non-integrability.
+Paper~IV analysed the IR mode at $\mathscr I^+$. Here we develop the UV
+sector.
+
+% ===============================================================
+\section{Ultraviolet temporal curvature}
+
+\begin{equation}\label{eq:F-def}
+\F_{\mu\nu}:=2\nabla_{[\mu}\A_{\nu]}.
+\end{equation}
+
+For an infinitesimal loop,
+\[
+\ln\mathcal H[C]=\tfrac12 \F_{\mu\nu}\Sigma^{\mu\nu}.
+\]
+
+% ===============================================================
+\section{Weyl--Ricci--kinematical decomposition (schematic)}
+
+We may write $\F_{\mu\nu}$ in the schematic form:
+\begin{align}\label{eq:F-decomp}
+\F_{\mu\nu}
+&=
+\frac{1}{2\alpha}
+\big(
+U^\rho R_{\rho\mu\nu}{}^\sigma U_\sigma
++
+U^\rho R_{\rho\nu\mu}{}^\sigma U_\sigma
+\big)
++
+\mathcal F^{(\mathrm{Ric})}_{\mu\nu}
++
+\mathcal F^{(\mathrm{kin})}_{\mu\nu}.
+\end{align}
+
+\noindent
+\textbf{Clarification.}
+The combination
+\[
+U^\rho R_{\rho\mu\nu}{}^\sigma U_\sigma
++
+U^\rho R_{\rho\nu\mu}{}^\sigma U_\sigma
+\]
+is written symmetrically to emphasise its tidal/Weyl character; the
+antisymmetry of the Riemann tensor ensures no sign ambiguity.  
+Appendix~\ref{app:curv} outlines the derivation.
+
+% ===============================================================
+\section{Temporal Raychaudhuri equation}
+
+\[
+\Theta_{\mathrm T}:=\nabla_\mu \A^\mu.
+\]
+
+We present a \textbf{structural Raychaudhuri-type evolution equation}.
+Numerical coefficients of cross-terms depend on the choice of spatial
+projector and are not required for UV--IR balance:
+
+\begin{equation}\label{eq:ray}
+U^\rho\nabla_\rho\Theta_{\mathrm T}
+=
+-\tfrac12\Theta_{\mathrm T}^2
+-\sigma^{\mathrm T}_{\mu\nu}\sigma_{\mathrm T}^{\mu\nu}
++\omega^{\mathrm T}_{\mu\nu}\omega_{\mathrm T}^{\mu\nu}
+-R_{\mu\nu}\A^\mu U^\nu
+-\F_{\mu\nu}\F^{\mu\nu}
++\mathcal S.
+\end{equation}
+
+% ===============================================================
+\section{Temporal flux and UV--IR balance law}
+
+We set
+\[
+\boxed{\kT=\tfrac14}
+\]
+consistent with the Bondi-news relation of Paper~IV.
+
+Define
+\[
+J_{\mathrm T}^\mu:=\nabla_\nu(\F^{\mu\nu}\Lambda).
+\]
+
+Integrating over a spacetime region yields:
+
+\begin{equation}\label{eq:flux-balance}
+\int_{\mathcal N}\nabla_\mu J_{\mathrm T}^\mu
+=
+\frac{\kT}{8\pi}
+\int_{\partial\mathcal N\cap\mathscr I^+}
+\Lambda\,D^A(\sigma^0 m_A+\bar\sigma^0\bar m_A)\,d\Omega.
+\end{equation}
+
+\noindent
+\textbf{Reference to Paper IV.}  
+The right-hand side is precisely the \emph{temporal soft charge defined
+in Paper~IV}.
+
+% ===============================================================
+\section{Linear response and susceptibility}
+
+A metric perturbation induces
+\[
+\delta\A_\mu=\mathsf L_\mu{}^{\rho\sigma}\delta g_{\rho\sigma}.
+\]
+
+The retarded kernel gives susceptibility:
+\[
+\delta\widetilde{\ln\mathcal H}[C](\omega)
+=
+\chi_{\mathrm T}(\omega;C,U)\,
+\widetilde S_{\rm grav}(\omega).
+\]
+
+\noindent
+\textbf{Additional references.}  
+For rigorous perturbation frameworks, see  
+Hollands--Wald (Class.~Quant.~Grav.~2013) and  
+Flanagan--Nichols (Living Rev.~Rel.~2017).
+
+% ===============================================================
+\section{Temporal noise}
+
+Classical stochastic:
+\[
+S_{\mathrm T}(\omega)=|\chi_{\mathrm T}|^2 S_{\rm grav}.
+\]
+
+Quantum: $\hat\A_\mu=\mathsf L\hat h_{\mu\nu}$ in linearized gravity.
+
+% ===============================================================
+\section{Projected temporal soft theorem}
+
+Projecting soft graviton polarization yields:
+\[
+S_{\mathrm T}(q;U)=\sum_k \Lambda(\hat p_k)(p_k\cdot U),
+\]
+\[
+\lim_{\omega\to0}\omega\,\mathcal M_{n+1}^{\rm temp}
+=
+S_{\mathrm T}\mathcal M_n.
+\]
+
+% ===============================================================
+\section{Kerr illustration}
+
+Using Boyer--Lindquist observers one finds nonzero
+$\A_\phi$ and $\F_{r\phi}$, giving temporal holonomy from frame dragging.
+
+% ===============================================================
+\section{Conclusion}
+
+We developed the UV temporal sector: curvature, Raychaudhuri structure,
+flux law, susceptibility, noise, and soft-theorem projection. Together
+with the IR analysis of Paper~IV, this yields a complete UV/IR
+operational description of relativistic time transport.
+
+
+% ===============================================================
+\appendix
+
+% -------------------------------------------------------
+\section{Temporal curvature decomposition (schematic)}
+\label{app:curv}
+
+This appendix presents the schematic derivation of
+Eq.~\eqref{eq:F-decomp}. Begin with
+\[
+\A_\mu
+=
+\frac{1}{4\alpha}\varepsilon_{\mu\nu\rho\sigma}
+U^\nu\omega^{\rho\sigma}.
+\]
+Expanding $\nabla_{[\mu}\A_{\nu]}$ and applying the Ricci identity,
+\[
+\nabla_{[\mu}\nabla_{\rho]}U_\nu
+=
+\tfrac12 R_{\mu\rho\nu}{}^\sigma U_\sigma,
+\]
+one isolates tidal (Weyl), Ricci, and kinematical sectors, giving the
+decomposition quoted in the main text.
+
+% -------------------------------------------------------
+\section{Temporal Raychaudhuri derivation}
+\label{app:ray}
+
+Compute
+\[
+U^\rho\nabla_\rho\Theta_{\mathrm T}
+=
+\nabla_\mu(U^\rho\nabla_\rho\A^\mu)
+-(\nabla_\mu U^\rho)\nabla_\rho\A^\mu,
+\]
+project spatially, and apply the commutator identity
+\(
+\nabla_{[\mu}\nabla_{\nu]}\A_\rho
+=
+\tfrac12 R_{\mu\nu\rho}{}^\sigma\A_\sigma.
+\)
+Rearrangement yields the structural Raychaudhuri form
+Eq.~\eqref{eq:ray}.
+
+% -------------------------------------------------------
+\section{Flux law and asymptotics}
+\label{app:flux}
+
+Using
+\[
+\A_A = r^{-1}\A_A^{(0)} + O(r^{-2}),
+\qquad
+\partial_u\A_A^{(0)}=\kT(Nm_A+\bar N\bar m_A),
+\]
+the leading radial flux of $J_{\mathrm T}^\mu$ integrates to the IR soft
+charge:
+\[
+\frac{\kT}{8\pi}
+\int \Lambda\,
+D^A(\sigma^0 m_A+\bar\sigma^0\bar m_A)\,d\Omega.
+\]
+
+% -------------------------------------------------------
+\section{Linear response}
+\label{app:response}
+
+Varying $\omega_{\mu\nu}$ under $\delta g_{\rho\sigma}$ and inserting
+into $\A_\mu$ yields the linear operator $\mathsf L$ in
+Eq.~\eqref{eq:linear-op}. The retarded Green function satisfies a
+causal-support integral relation. Temporal susceptibility follows by
+integrating over a chosen loop.
+
+% -------------------------------------------------------
+\section{Projected soft theorem}
+\label{app:soft}
+
+Projecting the polarization tensor of a soft graviton to its spin–1
+temporal component produces the temporal soft factor and associated
+Ward identity presented in the main text.
+
+% -------------------------------------------------------
+\section{Kerr calculations}
+\label{app:kerr}
+
+Using Boyer--Lindquist Kerr geometry and
+$U^\mu=(-g_{tt})^{-1/2}\partial_t$, compute $\omega_{\mu\nu}$, then
+\[
+\A_\mu
+=
+\frac{1}{4\alpha}\varepsilon_{\mu\nu\rho\sigma}
+U^\nu\omega^{\rho\sigma},
+\]
+and finally $\F_{r\phi}=\partial_r\A_\phi$, exhibiting temporal
+holonomy sourced by frame dragging.
+
+% ===============================================================
+\begin{thebibliography}{99}
+
+\bibitem{PaperI}
+Shivaraj~S.~Galagali,
+``Operational Time Geometry in General Relativity,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17873031}{doi:10.5281/zenodo.17873031}.
+
+\bibitem{PaperII}
+Shivaraj~S.~Galagali,
+``Operational Reconstruction of Local Spacetime Geometry,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17873097}{doi:10.5281/zenodo.17873097}.
+
+\bibitem{PaperIII}
+Shivaraj~S.~Galagali,
+``Newman--Penrose Formulation of the Temporal Connection,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17880576}{doi:10.5281/zenodo.17880576}.
+
+\bibitem{PaperIV}
+Shivaraj~S.~Galagali,
+``Temporal Soft Charges and Memory in Asymptotically Flat Gravity,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17880994}{doi:10.5281/zenodo.17880994}.
+
+\bibitem{Bondi}
+H.~Bondi, M.~G.~J.~van der Burg, A.~W.~K.~Metzner,
+Proc.\ Roy.\ Soc.\ A {\bf 269}, 21 (1962).
+
+\bibitem{Sachs}
+R.~K.~Sachs,
+Proc.\ Roy.\ Soc.\ A {\bf 270}, 103 (1962).
+
+\bibitem{NP}
+E.~T.~Newman and R.~Penrose,
+J.\ Math.\ Phys.\ {\bf 3}, 566 (1962).
+
+\bibitem{Strominger}
+A.~Strominger,
+\textit{Lectures on the Infrared Structure of Gravity and Gauge Theory},
+Princeton University Press (2017).
+
+\bibitem{WZ}
+R.~M.~Wald and A.~Zoupas,
+Phys.\ Rev.\ D {\bf 61}, 084027 (2000).
+
+\bibitem{HollandsWald}
+S.~Hollands and R.~M.~Wald,
+Class.\ Quant.\ Grav.\ \textbf{30}, 125006 (2013).
+
+\bibitem{FlanaganNichols}
+É.~É.~Flanagan and D.~Nichols,
+Living Rev.\ Relativ.\ \textbf{20}, 7 (2017).
+
+\end{thebibliography}
+
+\end{document}
