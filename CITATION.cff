@@ -1,0 +1,75 @@
+cff-version: 1.2.0
+message: "If you use the Temporal Rasa framework, please cite the following."
+title: "Temporal Rasa: Operational Time Geometry and Infrared/Ultraviolet Temporal Structure in General Relativity"
+version: "1.0.0"
+date-released: "2025-12-10"
+
+authors:
+  - family-names: "Galagali"
+    given-names: "Shivaraj S."
+    orcid: "https://orcid.org/0009-0005-4383-187X"
+
+repository-code: "https://github.com/ShivarajGalagali5/Temporal-Rasa"
+
+keywords:
+  - general relativity
+  - operational geometry
+  - temporal connection
+  - asymptotic structure
+  - soft charges
+  - gravitational memory
+  - congruence kinematics
+  - Newman-Penrose formalism
+  - infrared gravity
+  - ultraviolet curvature
+
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Galagali"
+      given-names: "Shivaraj S."
+  title: "Temporal Rasa: Operational Time Geometry and Infrared/Ultraviolet Temporal Structure in General Relativity"
+  year: 2025
+  doi: "10.5281/zenodo.17873031"
+  journal: "Temporal Rasa Research Series"
+
+references:
+  - type: article
+    authors:
+      - family-names: "Galagali"
+        given-names: "Shivaraj S."
+    title: "Operational Time Geometry in General Relativity (Temporal Rasa I)"
+    year: 2025
+    doi: "10.5281/zenodo.17873031"
+
+  - type: article
+    authors:
+      - family-names: "Galagali"
+        given-names: "Shivaraj S."
+    title: "Operational Reconstruction of Local Spacetime Geometry (Temporal Rasa II)"
+    year: 2025
+    doi: "10.5281/zenodo.17873097"
+
+  - type: article
+    authors:
+      - family-names: "Galagali"
+        given-names: "Shivaraj S."
+    title: "Newman–Penrose Formulation of the Temporal Connection (Temporal Rasa III)"
+    year: 2025
+    doi: "10.5281/zenodo.17880576"
+
+  - type: article
+    authors:
+      - family-names: "Galagali"
+        given-names: "Shivaraj S."
+    title: "Temporal Soft Charges and Memory in Asymptotically Flat Gravity (Temporal Rasa IV)"
+    year: 2025
+    doi: "10.5281/zenodo.17880994"
+
+  - type: article
+    authors:
+      - family-names: "Galagali"
+        given-names: "Shivaraj S."
+    title: "The Ultraviolet Temporal Sector of General Relativity (Temporal Rasa V)"
+    year: 2025
+    doi: "10.5281/zenodo.17881422"
