@@ -129,8 +129,6 @@ The Temporal Rasa program is planned to expand into **20–100 papers**, coverin
 * Cosmological temporal sectors
 * Beyond-GR extensions
 
-A full **Roadmap.md** can be generated if you want.
-
 ---
 
 ## **Citing Temporal Rasa**
