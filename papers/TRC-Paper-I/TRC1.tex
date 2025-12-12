@@ -1,0 +1,2357 @@
+\pdfoutput=1
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm,bm,mathrsfs}
+\usepackage{geometry}
+\usepackage{tensor}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{microtype}
+\geometry{margin=1in}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Classical Temporal Geometry in General Relativity},
+  pdfauthor={Shivaraj S. Galagali}
+}
+
+% ----------------------------
+% Macros
+% ----------------------------
+\newcommand{\A}{\mathcal A}
+\newcommand{\F}{\mathcal F}
+\newcommand{\Atemp}{\mathcal A^{(0)}}
+\newcommand{\ThetaT}{\Theta_{\mathrm T}}
+\newcommand{\al}{\alpha}
+\newcommand{\shear}{\sigma}
+\newcommand{\vort}{\omega}
+\newcommand{\expn}{\theta}
+\newcommand{\hproj}{h}
+\newcommand{\Umu}{U^\mu}
+
+% --------------------------------------------------------------
+% TITLE & AUTHOR
+% --------------------------------------------------------------
+\title{\bf Classical Temporal Geometry in General Relativity}
+
+\author{
+Shivaraj S.~Galagali,{\href{https://orcid.org/0009-0005-4383-187X}{ORCID}}\\
+\small Independent Researcher, Bengaluru, India\\
+\small \texttt{shivarajsgalagali5@gmail.com}
+}
+\date{\today}
+
+% --------------------------------------------------------------
+\begin{document}
+\maketitle
+
+\begin{center}
+{\Large \emph{Temporal Rasa Compendium: Part I}}\\[10pt]
+\end{center}
+
+\begin{abstract}
+Temporal geometry in general relativity is operational: 
+proper time depends on the path taken, and time standards transported
+along different worldlines fail to remain synchronized in the presence of
+vorticity.  This paper develops a unified formulation of this structure
+using the \emph{temporal connection} 
+\(
+\A_\mu = (2\al)^{-1}\,\vort_{\nu\mu}U^\nu,
+\)
+whose holonomy encodes measurable clock desynchronisation.
+Building upon the foundations established in Papers~I--V of the
+Temporal Rasa series, we show that $\A_\mu$ admits a complete
+constraint--evolution--flux--symmetry--entropy--canonical structure
+analogous to the spin--2 BMS sector of asymptotically flat gravity.
+
+We present twelve \emph{Temporal Laws}: a constraint equation, a
+Raychaudhuri-type evolution, a UV--IR flux relation, a soft symmetry and
+algebra, a canonical IR phase space, a modular Hamiltonian and entropy
+law, a holographic dictionary, a Noether--Bianchi identity, and a
+Hamilton--Jacobi principle.  These results demonstrate that temporal
+geometry forms a closed structural subsystem of GR, derived entirely
+from $(g_{\mu\nu},U^\mu)$ with no new propagating degrees of freedom.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% --------------------------------------------
+\section{Introduction}
+\label{sec:intro}
+
+Time in general relativity is not universal: different worldlines
+accumulate different proper times, and transporting a local time standard
+around a closed loop generically produces measurable desynchronisation.
+This operational structure is encoded in the vorticity of an observer
+congruence. Papers~I--V introduced the \emph{temporal connection}
+\[
+\A_\mu = \frac{1}{2\al}\,\vort_{\nu\mu}U^\nu,
+\qquad 
+\A_\mu U^\mu = 0,
+\] \cite{PaperI,PaperIII}
+
+
+and demonstrated that: 
+(i) its holonomy quantifies clock desynchronisation \cite{PaperI};
+
+(ii) its leading angular mode at $\mathscr I^+$ is the spin--1 projection
+of the Bondi shear \cite{PaperIII};
+
+(iii) the resulting IR temporal mode generates temporal soft symmetries,
+charges and memory \cite{PaperIV}.
+
+
+This paper consolidates and extends those results into a systematic
+framework. The twelve laws presented here establish temporal geometry as
+a closed structural subsystem of GR, with well-defined constraint,
+evolution, conservation and holographic properties. 
+They form Part~I of the Temporal Rasa Compendium.
+
+\subsection*{Relation to the Temporal Rasa Series}
+
+The twelve laws formulated in this Pillar summarise and unify results
+established rigorously in Papers~I–V of the Temporal Rasa Series:
+\begin{itemize}
+
+    \item \textbf{Paper~I} \cite{PaperI} provides the operational definition of the temporal lapse 
+    $\alpha$, the master evolution equation, and clock–transport holonomy.
+    
+    \item \textbf{Paper~II} \cite{PaperII} establishes the reconstruction of local geometry from 
+    $(\theta, \sigma_{\mu\nu}, \omega_{\mu\nu})$, giving the structural
+    foundation for Laws~2–5.
+    
+    \item \textbf{Paper~III} \cite{PaperIII} identifies the Newman--Penrose formulation of the 
+    temporal connection and proves that its leading mode at $\mathscr I^+$ is 
+    the spin--1 projection of the Bondi shear, underlying Laws~6–7.
+    
+    \item \textbf{Paper~IV} \cite{PaperIV} develops the infrared temporal sector: soft symmetry,
+    Wald--Zoupas charge, and temporal memory, corresponding to Laws~8–10.
+    
+    \item \textbf{Paper~V} \cite{PaperV} introduces the ultraviolet temporal sector, temporal 
+    curvature, Raychaudhuri structure, UV--IR balance law, and soft-theorem 
+    projection, corresponding to Laws~11–12.
+
+\end{itemize}
+
+
+These papers collectively establish that temporal geometry introduces
+\emph{no new fields and no new degrees of freedom}: every temporal
+quantity used in this Pillar is a derived contraction or projection of
+standard GR kinematics and Bondi radiative data.
+
+
+
+% --------------------------------------------
+\section{Preliminaries and Notation}
+\label{sec:prelim}
+
+We adopt the metric signature $(-,+,+,+)$ and set $c=G=1$.  
+A timelike observer congruence $U^\mu$ satisfies $U^\mu U_\mu=-1$, and
+its orthogonal projector is
+\begin{equation}
+\hproj_{\mu\nu} = g_{\mu\nu} + U_\mu U_\nu.
+\end{equation}
+
+The $1{+}3$ kinematical decomposition of $\nabla_\mu U_\nu$ is
+\begin{equation}
+\nabla_\mu U_\nu
+=
+\frac{1}{3}\,\expn\,\hproj_{\mu\nu}
++ \shear_{\mu\nu}
++ \vort_{\mu\nu}
+- U_\mu a_\nu,
+\end{equation}
+
+
+where $\expn$ is expansion, $\shear$ shear,
+$\vort$ vorticity, and $a_\nu = U^\mu\nabla_\mu U_\nu$ the
+four-acceleration.
+
+A reference congruence $n^\mu$ is used to define an operational lapse
+\begin{equation}
+\al = -U_\mu n^\mu >0.
+\end{equation}
+
+Near future null infinity $\mathscr I^+$ we use Bondi coordinates
+$(u,r,x^A)$, with a null tetrad $(l^\mu,n^\mu,m^\mu,\bar m^\mu)$ and
+Bondi shear $\sigma^0(u,x^A)$ and news $N=\partial_u\sigma^0$.
+
+Throughout the paper, the temporal connection and all derived
+quantities are understood as functionals of $(g_{\mu\nu},U^\mu)$ only.
+There are no new degrees of freedom.
+
+% --------------------------------------------
+\section{Temporal Connection and Temporal Curvature}
+\label{sec:temp-connection}
+
+\subsection{Definition}
+
+Given $U^\mu$ and $\al$, the \emph{temporal connection} is defined as
+\begin{equation}
+\A_\mu
+=
+\frac{1}{2\al}\,\vort_{\nu\mu}U^\nu,
+\qquad
+\A_\mu U^\mu = 0.
+\label{eq:A-def}
+\end{equation}
+The holonomy around a small loop $C$ is
+\begin{equation}
+\oint_C \A_\mu dx^\mu
+=
+\frac{1}{2\al}\int_{\Sigma(C)} 
+\vort_{\mu\nu}U^\nu\, d\Sigma^\mu,
+\end{equation}
+so $\A_\mu$ encodes operational clock desynchronisation.
+
+\subsection{Temporal curvature}
+
+The curvature of $\A_\mu$ is
+\begin{equation}
+\F_{\mu\nu} := 2\nabla_{[\mu}\A_{\nu]}.
+\label{eq:F-def}
+\end{equation}
+For small surface elements $\Sigma^{\mu\nu}$,
+\begin{equation}
+\ln \mathcal{H}[C]
+=
+\frac12\,\F_{\mu\nu}\,\Sigma^{\mu\nu}
++O(\Sigma^2),
+\end{equation}
+so $\F_{\mu\nu}$ measures infinitesimal non-integrability of temporal
+transport, analogous to curvature for spatial frames.
+
+\subsection{Asymptotic projection and the IR temporal mode}
+
+At large $r$, the angular components of $\A_\mu$ behave as
+\begin{equation}
+\A_A(u,r,x^A)
+=
+\frac{1}{r}\Atemp_A(u,x^A)
++ O(r^{-2}).
+\end{equation}
+Using the NP expansion of vorticity and shear (Paper~III), the leading
+mode is
+\begin{equation}
+\Atemp_A
+=
+-\sigma^0\,\bar m_A
+-\bar\sigma^0\,m_A,
+\label{eq:A0-shear}
+\end{equation}
+the spin--1 projection of the Bondi shear.
+
+Thus the IR temporal sector contains \emph{no new degrees of freedom};
+it is fixed algebraically by $\sigma^0$.
+
+\subsection{Relation to temporal memory}
+
+From \eqref{eq:A0-shear},
+\begin{equation}
+\partial_u \Atemp_A
+=
+-N\,\bar m_A
+-\bar N\,m_A,
+\end{equation}
+so the temporal memory between $u_i$ and $u_f$ is
+\begin{equation}
+\Delta \Atemp_A
+=
+-\!\int_{u_i}^{u_f}
+\!\!\left( N\,\bar m_A + \bar N\,m_A \right) du,
+\end{equation}
+matching the E-mode part of displacement memory and verifying that
+temporal memory is a repackaging of Bondi shear evolution.
+
+\subsection{Interpretation}
+
+\begin{quote}
+The temporal connection is the observer-dependent but covariant object
+encoding proper-time transport; its IR mode is simply a projection of
+Bondi shear, so its entire structure is contained inside GR’s existing
+degrees of freedom.  All “laws” derived below organise this structure
+without introducing new fields.
+\end{quote}
+
+\newpage
+
+
+
+% ================================================================
+\section{Law I: Temporal Constraint Equation}
+\label{sec:Law1_constraint}
+
+\begin{quote}
+\textbf{Law I (Temporal Constraint).}
+On any spacelike or null hypersurface with induced metric $h_{\mu\nu}$  
+and surface derivative $D_\mu$, the divergence of the spatial temporal  
+connection satisfies a constraint of the form
+\begin{equation}
+D^A \A_A
+=
+\mathcal{S}_{\rm temp}
+\bigl[
+E_{\mu\nu},R_{\mu\nu};
+(\expn,\shear,\vort,a_\mu),
+\bigr],
+\label{eq:temp-constraint}
+\end{equation}
+where $\mathcal{S}_{\rm temp}$ is a local scalar built from curvature  
+and $1{+}3$ kinematical fields.  
+No new degree of freedom enters: $D^A\A_A$ is fixed by $(g_{\mu\nu},U^\mu)$.
+\end{quote}
+
+% ------------------------------------------------------------
+\subsection{Derivation sketch}
+
+Insert the definition
+\begin{equation}
+\A_\mu = \frac{1}{2\alpha}\,\vort_{\nu\mu} U^\nu,
+\end{equation}
+into $D^A\A_A = h^{AB}D_A\A_B$, and expand using the Ricci identity  
+\begin{equation}
+\nabla_{[\mu}\nabla_{\nu]}U_\rho
+=
+\frac12 R_{\mu\nu\rho}{}^\sigma U_\sigma.
+\end{equation}
+
+Separating terms linear in curvature and quadratic in kinematical fields  
+yields schematically
+\begin{equation}
+D^A\A_A
+\simeq
+\frac{1}{2\alpha}\,E_{\mu\nu}\,\shear^{\mu\nu}
++
+\frac{1}{4\alpha}\,R_{\mu\nu}\,\vort^{\mu\nu}
++
+D_\mu\!\left(\frac{1}{2\alpha}\,\vort^\mu{}_{\nu} a^\nu\right)
++
+\text{(kinematical squares)}.
+\label{eq:temp-constraint-expanded}
+\end{equation}
+
+This constraint is purely structural:  
+it contains *no* independent function beyond geometric and congruence data.
+
+% ------------------------------------------------------------
+\subsection{Bondi limit and the IR constraint}
+
+At future null infinity, the temporal connection reduces to its angular  
+component $\Atemp_A$ via
+\begin{equation}
+\A_A(u,r,x^A) = \frac1r\,\Atemp_A(u,x^A) + O(r^{-2}).
+\end{equation}
+
+The leading-order constraint becomes
+\begin{equation}
+D^A \Atemp_A
+=
+D^2\Re(\sigma^0)
++
+(\text{matter flux}),
+\label{eq:temp-constraint-bondi}
+\end{equation}
+where $D^2$ is the Laplacian on the sphere.
+
+Thus the IR temporal constraint is equivalent to the  
+divergence of the Bondi shear’s real (E-mode) part.
+
+No freedom remains beyond $\sigma^0$:  
+\[
+\Atemp_A \quad\text{contains no new DOF}.
+\]
+
+% ------------------------------------------------------------
+\subsection{Interpretation}
+
+\begin{quote}
+Law I is the temporal analogue of GR's Hamiltonian constraint:  
+it imposes an instantaneous relation tying the observable temporal  
+connection to curvature and congruence geometry.
+
+At $\mathscr I^+$, it reproduces the Bondi–Sachs shear constraint,  
+confirming that the temporal soft mode is fully determined by the  
+metric’s radiative data.
+\end{quote}
+
+% ================================================================
+
+
+
+% ================================================================
+\section{Law II: Temporal Raychaudhuri Evolution}
+\label{sec:Law2_raychaudhuri}
+
+\begin{quote}
+\textbf{Law II (Temporal Raychaudhuri Evolution).}
+Define the temporal expansion scalar
+\begin{equation}
+\Theta_{\mathrm T} := \nabla_\mu \A^\mu.
+\end{equation}
+Along the observer congruence $U^\mu$, $\Theta_{\mathrm T}$ obeys a
+Raychaudhuri-type evolution equation:
+\begin{align}
+U^\rho \nabla_\rho \Theta_{\mathrm T}
+&=
+-\tfrac12 \Theta_{\mathrm T}^2
+-\sigma^{\mathrm T}_{\mu\nu} \sigma_{\mathrm T}^{\mu\nu}
++\omega^{\mathrm T}_{\mu\nu} \omega_{\mathrm T}^{\mu\nu}
+-R_{\mu\nu}\A^\mu U^\nu
+-\F_{\mu\nu}\F^{\mu\nu}
++ \mathcal{S}_{\rm kin},
+\label{eq:temporal-raychaudhuri}
+\end{align}
+where $\sigma^{\mathrm T}_{\mu\nu}$ and $\omega^{\mathrm T}_{\mu\nu}$
+are the shear and vorticity of the temporal connection,  
+$\F_{\mu\nu} = 2\nabla_{[\mu}\A_{\nu]}$ is the temporal curvature,  
+and $\mathcal S_{\rm kin}$ contains lower-derivative kinematical terms.
+\end{quote}
+
+% ------------------------------------------------------------
+\subsection{Kinematical decomposition}
+
+Project the derivative of $\A_\mu$ onto the spatial hypersurface:
+\begin{equation}
+D_\mu \A_\nu
+:= h_\mu{}^\rho h_\nu{}^\sigma \nabla_\rho \A_\sigma.
+\end{equation}
+
+Decompose into irreducible parts:
+\begin{equation}
+D_\mu\A_\nu
+=
+\frac12 h_{\mu\nu}\Theta_{\mathrm T}
++ \sigma^{\mathrm T}_{\mu\nu}
++ \omega^{\mathrm T}_{\mu\nu},
+\label{eq:temp-kinematic-decomp}
+\end{equation}
+where  
+$\sigma^{\mathrm T}_{\mu\nu}$ is symmetric trace-free,  
+$\omega^{\mathrm T}_{\mu\nu}$ antisymmetric.
+
+The temporal expansion $\Theta_{\mathrm T}$ measures the longitudinal rate  
+of change of temporal transport.
+
+% ------------------------------------------------------------
+\subsection{Derivation outline}
+
+Starting from  
+\[
+\Theta_{\mathrm T} = \nabla_\mu \A^\mu,
+\]
+differentiate along $U^\mu$:
+\[
+U^\rho \nabla_\rho \Theta_{\mathrm T}
+= \nabla_\mu (U^\rho \nabla_\rho \A^\mu)
+- (\nabla_\mu U^\rho)(\nabla_\rho \A^\mu).
+\]
+
+Use:
+
+- the Ricci identity   
+  \[
+  \nabla_{[\mu}\nabla_{\rho]}\A_\nu
+  = \tfrac12 R_{\mu\rho\nu}{}^\sigma \A_\sigma,
+  \]
+
+- the $1{+}3$ decomposition of $\nabla_\mu U_\nu$ into  
+  $(\expn,\shear_{\mu\nu},\vort_{\mu\nu},a_\mu)$,
+
+- the spatial decomposition \eqref{eq:temp-kinematic-decomp},
+
+and group all terms into:  
+
+- quadratic temporal-kinematic terms  
+- curvature focusing terms  
+- the $\F_{\mu\nu}\F^{\mu\nu}$ contribution  
+- lower-derivative source terms $\mathcal S_{\rm kin}$.
+
+This yields \eqref{eq:temporal-raychaudhuri}.
+
+% ------------------------------------------------------------
+\subsection{Physical meaning}
+
+\begin{itemize}
+\item $\Theta_{\mathrm T}^2$ and $\sigma_{\mathrm T}^2$  
+      \(\rightarrow\) temporal focusing (analogous to geodesic convergence).
+
+\item $\omega_{\mathrm T}^2$  
+      \(\rightarrow\) temporal defocusing (rotational spreading in clock transport).
+
+\item $R_{\mu\nu}\A^\mu U^\nu$  
+      \(\rightarrow\) focusing from Ricci curvature and matter.
+
+\item $\F_{\mu\nu}\F^{\mu\nu}$  
+      \(\rightarrow\) focusing/defocusing from temporal curvature itself.
+
+\item $\mathcal S_{\rm kin}$  
+      \(\rightarrow\) contributions from the observer congruence.
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsection{Interpretation}
+
+\begin{quote}
+Law II shows that the temporal connection behaves like a  
+\emph{derived congruence} with its own focusing equation.
+
+Temporal expansion evolves according to curvature and shear, analogously  
+to how geodesic congruences evolve under the usual Raychaudhuri equation.  
+
+This law underpins temporal stability (Law 53) and cosmological Genesis  
+(Law 33), and constrains interior reconstruction (Laws 15–17).
+\end{quote}
+
+% ================================================================
+
+
+% ================================================================
+\section{Law III: UV--IR Temporal Flux Law}
+\label{sec:Law3_flux}
+
+\begin{quote}
+\textbf{Law III (UV--IR Temporal Flux Law).}
+For any asymptotically-flat spacetime, the temporal soft charge
+\[
+Q_\Lambda(u) \;=\; \frac{1}{8\pi} \int_{S^2}
+\Lambda(\Omega)\,D^A\mathcal{A}_A(u,\Omega)\,d\Omega
+\]
+obeys the universal flux-balance equation:
+\begin{equation}
+Q_\Lambda(u_2)-Q_\Lambda(u_1)
+=
+\frac{1}{8\pi}
+\int_{u_1}^{u_2} \! du
+\int_{S^2}
+\Lambda(\Omega)\,B_A(u,\Omega)\,d\Omega
+\;+\; \mathcal{F}^{\rm matter}_\Lambda,
+\label{eq:temp-flux}
+\end{equation}
+where $B_A=\partial_u\mathcal{A}_A$ is the temporal news.
+\end{quote}
+
+The matter contribution is
+\begin{equation}
+\mathcal{F}^{\rm matter}_\Lambda
+=
+\frac{1}{8\pi}
+\int_{\mathcal N(u_1,u_2)}
+\Lambda(\Omega)\,
+\big(8\pi\,T_{\mu\nu}U^\mu\A^\nu\big)\,dV,
+\label{eq:matter-flux}
+\end{equation}
+integrated over the spacetime slab $\mathcal N$ bounded by the retarded
+cuts $u_1,u_2$ of $\mathscr I^+$.
+
+% ------------------------------------------------------------
+\subsection{1. Derivation from the Bianchi identity}
+
+The temporal curvature
+\[
+\F_{\mu\nu}=2\nabla_{[\mu}\A_{\nu]},
+\]
+satisfies
+\[
+\nabla_{[\lambda}\F_{\mu\nu]}=0.
+\]
+
+Project along the null generators of $\mathscr I^+$,
+use the Bondi expansion for the shear, and integrate over a retarded 
+time interval.  
+One obtains the conservation law:
+\[
+\partial_u Q_\Lambda(u)
+=
+\frac{1}{8\pi}
+\int_{S^2}\Lambda B_A\,d\Omega
++ \int_{S^2}\Lambda\,T^{\rm eff}_{uA}\,d\Omega,
+\]
+which integrates to \eqref{eq:temp-flux}.
+
+The matter term comes from the effective flux  
+\[
+T^{\rm eff}_{uA} = T_{\mu\nu}k^\mu h^\nu{}_A,
+\]
+pulled to $\mathscr I^+$.
+
+% ------------------------------------------------------------
+\subsection{2. Interpretation}
+
+\begin{itemize}
+\item The \emph{temporal news} $B_A$ plays the role for the temporal
+sector analogous to Bondi news for gravitational radiation.
+
+\item The soft charge variation depends only on IR data
+$(\Atemp,B)$ — no UV regulators enter.
+
+\item Matter flux supplements gravitational temporal flux in the same
+way EM current supplements Maxwell charge flux.
+\end{itemize}
+
+\begin{quote}
+\emph{
+Law III is the bridge between UV physics and IR observables:
+any UV completion of quantum gravity must reproduce this flux-balance
+equation in the infrared limit (see Law 30).
+}
+\end{quote}
+
+% ------------------------------------------------------------
+\subsection{3. Relation to memory}
+
+Integrating \eqref{eq:temp-flux} with $\Lambda=1$ on a spherical patch:
+\[
+Q(u_2)-Q(u_1)
+=
+\frac{1}{8\pi}\int_{u_1}^{u_2}\! du\!\int_{S^2}B_A\,d\Omega
++\mathcal{F}^{\rm matter}.
+\]
+
+The term involving $B_A$ is precisely the temporal memory integral:
+\[
+\Delta \Atemp_A
+=
+-\int B_A\,du.
+\]
+
+Thus:
+\[
+\Delta Q_\Lambda
+\propto
+\int \Lambda\,\Delta \Atemp_A.
+\]
+
+This underlies the temporal memory law used in black-hole (Laws 15–22)
+and cosmological (Laws 33–40) contexts.
+
+% ------------------------------------------------------------
+\subsection{4. Summary}
+
+\begin{quote}
+\emph{
+Law III states that temporal charge is conserved up to flux of temporal
+news and matter.  
+It is the IR conservation law underlying temporal soft hair,  
+temporal memory, and the entire UV–IR matching structure of the theory.
+}
+\end{quote}
+
+% ================================================================
+
+
+% ================================================================
+\section{Law IV: Temporal Soft Symmetry}
+\label{sec:Law4_soft}
+
+\begin{quote}
+\textbf{Law IV (Temporal Soft Symmetry).}
+The infrared temporal potential $\Atemp_A(u,\Omega)$, defined as the
+spin--1 projection of the Bondi shear,
+\[
+\Atemp_A(u,\Omega)
+=
+C_{AB}(u,\Omega)\,\bar m^B
++
+\bar C_{AB}(u,\Omega)\,m^B,
+\]
+admits an infinite-dimensional family of angle-dependent symmetry
+transformations:
+\begin{equation}
+\delta_\Lambda \Atemp_A = D_A \Lambda(\Omega),
+\qquad
+\ell(\Lambda)\ge 2,
+\label{eq:temp-soft-sym}
+\end{equation}
+where $D_A$ is the covariant derivative on the sphere.
+This transformation is a pure-\,$u$\,independent shift of the temporal IR
+potential and leaves the physical curvature and news invariant:
+\[
+\delta_\Lambda B_A = 0,
+\qquad
+\delta_\Lambda \F_{\mu\nu}^{(0)}=0.
+\]
+\end{quote}
+
+% ------------------------------------------------------------
+\subsection{1. Origin of the symmetry}
+
+Because the temporal field is \emph{derived} from the Bondi shear,  
+the transformation \eqref{eq:temp-soft-sym} corresponds to adding an
+$\ell\ge 2$ pure-gauge E-mode deformation of the shear:
+\[
+C_{AB}\;\rightarrow\; C_{AB}+D_A D_B \Lambda - \frac12 \gamma_{AB} D^2\Lambda.
+\]
+
+This shift:
+\begin{itemize}
+\item leaves the Bondi news $N_{AB}=\partial_u C_{AB}$ invariant,
+\item changes only the *zero-frequency* or *memory* component,
+\item produces a **nontrivial action** on IR observables
+even though it is gauge-like at finite $u$.
+\end{itemize}
+
+Thus, it is a genuine **soft symmetry** in the sense of Strominger’s
+analysis of large-gauge transformations.
+
+% ------------------------------------------------------------
+\subsection{2. Temporal soft charge}
+
+Corresponding to \eqref{eq:temp-soft-sym} is the conserved charge:
+\begin{equation}
+Q_\Lambda(u)
+=
+\frac{1}{8\pi}
+\int_{S^2}
+\Lambda(\Omega)\,D^A \Atemp_A(u,\Omega)\,d\Omega,
+\label{eq:temp-soft-charge}
+\end{equation}
+defined purely from gravitational IR data.
+
+The charge acts through:
+\[
+\{Q_\Lambda, \Atemp_A\}
+=
+D_A\Lambda,
+\]
+which means **Law IV + Law VI** will form the canonical soft algebra.
+
+% ------------------------------------------------------------
+\subsection{3. Gauge-invariant quantities}
+
+Because:
+\[
+\delta_\Lambda B_A = \delta_\Lambda \partial_u\Atemp_A = 0,
+\]
+the temporal **news**, which encodes radiative content,  
+is invariant.  
+Thus temporal symmetry acts exclusively on IR vacuum configurations:
+\[
+\Atemp_A \sim \Atemp_A + D_A\Lambda,
+\]
+while leaving local curvature unchanged.
+
+This matches precisely the behavior of:
+- BMS supertranslations (spin–0 sector),
+- soft photons in QED (spin–1),
+- soft gravitons (spin–2).
+
+But here it is the **spin–1 part of the Bondi shear**, not a new field.
+
+% ------------------------------------------------------------
+\subsection{4. Physical interpretation}
+
+\begin{quote}
+\emph{
+Temporal soft symmetry is a redundancy among IR vacua of gravity,
+generated by the part of the Bondi shear that contributes to temporal
+holonomy but carries no radiative energy.  
+}
+\end{quote}
+
+It corresponds to:
+- shifting the zero-frequency temporal profile,
+- changing the accumulated temporal memory,
+- modifying the phase of temporal holonomy around loops.
+
+The symmetry does \textit{not} introduce a new gauge field;  
+it reorganizes the IR gravitational data into a canonical form.
+
+% ------------------------------------------------------------
+\subsection{5. Structural role in the Temporal Sector}
+
+Law IV is one of the three pillars of the IR temporal structure:
+
+\[
+\textbf{(i) Soft Symmetry (Law IV)}
+\;\oplus\;
+\textbf{(ii) Temporal Algebra (Law VI)}
+\;\oplus\;
+\textbf{(iii) Flux Balance (Law III)}.
+\]
+
+
+
+Together these:
+- define the IR phase space,
+- enforce Bianchi-identity-based conservation,
+- constrain UV completions (Law 30).
+
+% ------------------------------------------------------------
+\subsection{6. Summary}
+
+\begin{quote}
+\emph{
+Temporal soft symmetry is the fundamental IR redundancy of the derived
+temporal sector: a pure E-mode shear shift that acts nontrivially on
+memory and soft charges, but introduces no new dynamics.
+}
+\end{quote}
+
+% ================================================================
+
+
+% ================================================================
+\section{Law V: Temporal Algebra and Noether Structure}
+\label{sec:Law5_algebra}
+
+\begin{quote}
+\textbf{Law V (Temporal Algebra and Noether Structure).}
+The infrared temporal fields $(\Atemp_A,B_A)$ derived from the Bondi
+shear form a closed gravitational phase-space algebra determined entirely
+by the Einstein–Hilbert symplectic form.  
+The Noether (Wald–Zoupas) charge associated with the temporal soft
+symmetry generates the correct canonical transformation on IR variables.
+\end{quote}
+
+% ------------------------------------------------------------
+\subsection{1. IR temporal phase space from shear/news}
+
+Define the temporal IR variables as:
+\[
+A_A(u,\Omega)=
+C_{AB}(u,\Omega)\bar m^B+\bar C_{AB}(u,\Omega)m^B,
+\qquad
+B_A=\partial_u A_A.
+\]
+
+From the Bondi shear symplectic form,
+\[
+\Omega_{\rm grav}
+=
+\frac{1}{16\pi}
+\int_{S^2}\!
+\delta C^{AB}
+\wedge
+\delta N_{AB}\,d\Omega,
+\]
+we obtain the induced temporal symplectic form:
+\[
+\Omega_{\rm temp}
+=
+\frac{1}{16\pi}
+\int_{S^2}
+\delta A_A
+\wedge
+\delta B^A\,d\Omega.
+\]
+
+Thus the temporal fields inherit their entire algebra from gravity —  
+*no new terms, no independent action*.
+
+% ------------------------------------------------------------
+\subsection{2. Canonical brackets}
+
+From $\Omega_{\rm temp}$ we read off the Poisson brackets:
+\begin{equation}
+\{A_A(\Omega),B_B(\Omega')\}
+=
+16\pi\,
+\gamma_{AB}\,
+\delta^{(2)}(\Omega,\Omega'),
+\label{eq:AB-bracket}
+\end{equation}
+and all other equal-time brackets vanish.
+
+This is the *full* classical algebra of the temporal IR sector.
+
+% ------------------------------------------------------------
+\subsection{3. Noether charge generating the soft symmetry}
+
+The soft charge from Law IV is:
+\[
+Q_\Lambda
+=
+\frac{1}{8\pi}
+\int_{S^2}
+\Lambda\,D^A A_A\,d\Omega.
+\]
+
+Using bracket \eqref{eq:AB-bracket}:
+\[
+\{Q_\Lambda,A_A\}=D_A\Lambda,
+\qquad
+\{Q_\Lambda,B_A\}=0,
+\]
+exactly reproducing the temporal soft symmetry transformation:
+\[
+\delta_\Lambda A_A=D_A\Lambda.
+\]
+
+Thus the soft symmetry is \emph{canonical}, not imposed by hand.
+
+% ------------------------------------------------------------
+\subsection{4. Closure of the algebra}
+
+Because:
+\[
+\{Q_\Lambda,Q_{\Lambda'}\}=0,
+\]
+the temporal soft sector is an infinite-dimensional Abelian algebra
+(same structure as QED electric large gauge symmetries or
+supertranslations projected to spin–1 channel).
+
+There is no central extension:
+- because the temporal field is shear-derived,  
+- and because $A_A$ has no independent dynamical phase.
+
+This is consistent with Axiom 0.
+
+% ------------------------------------------------------------
+\subsection{5. Noether–Wald–Zoupas structure}
+
+The Wald–Zoupas charge variation for the gravitational shear is:
+\[
+\delta Q_\Lambda^{\rm WZ}
+=
+\frac{1}{16\pi}
+\int_{S^2}
+\Lambda\,D^A \delta A_A\,d\Omega.
+\]
+
+Integrating over phase space reproduces the soft charge \eqref{eq:AB-bracket}.
+
+Thus:
+- the *Noether charge*,  
+- the *canonical generator*,  
+- and the *soft memory charge*  
+
+are all the same object viewed through different lenses.
+
+This triple identification is the hallmark of infrared gravitational structure.
+
+% ------------------------------------------------------------
+\subsection{6. Interpretation: algebra = kinematics of soft time}
+
+\begin{quote}
+\emph{
+The temporal algebra is simply the gravitational shear/news algebra written
+in a spin–1 basis.  
+It quantifies the IR kinematics of gravitational time transport, not the
+dynamics of a new field.
+}
+\end{quote}
+
+Thus the temporal sector:
+- is canonical,
+- closed,
+- derived,
+- gauge-constrained,
+- and entirely contained within GR's radiative phase space.
+
+% ------------------------------------------------------------
+\subsection{7. Summary}
+
+\begin{quote}
+\emph{
+Law V establishes the canonical phase-space structure of the temporal
+sector:  
+the brackets, the Noether charge, and the soft symmetry form a single
+geometric package inherited from gravitational radiation.
+}
+\end{quote}
+
+% ================================================================
+
+% ================================================================
+\section{Law VI: IR Temporal Phase Space Law}
+\label{sec:Law6_phase_space}
+
+\begin{quote}
+\textbf{Law VI (IR Temporal Phase Space).}
+The infrared temporal variables $(A_A,B_A)$ defined as the spin–1
+projection of the Bondi shear and news form a complete canonical
+subsystem of the gravitational radiative phase space.  
+Their symplectic form and Hamiltonian flows are inherited entirely from
+the Einstein–Hilbert symplectic structure, with no additional degrees of
+freedom introduced.
+\end{quote}
+
+% ------------------------------------------------------------
+\subsection{1. IR variables from Bondi shear}
+
+The Bondi shear and news are decomposed into spin–$\pm2$ modes:
+\[
+C_{AB} = \sigma^0\,\bar m_A \bar m_B + \bar\sigma^0\,m_A m_B,
+\qquad
+N_{AB} = \partial_u C_{AB}.
+\]
+
+Define the temporal spin–1 projection:
+\[
+A_A = -\left(\sigma^0\,\bar m_A + \bar\sigma^0\,m_A\right),
+\qquad
+B_A = \partial_u A_A.
+\]
+
+Because these are linear combinations of $C_{AB}$ and $N_{AB}$,
+their phase-space structure is fully inherited.
+
+% ------------------------------------------------------------
+\subsection{2. Symplectic form}
+
+The Einstein–Hilbert radiative symplectic form is:
+\[
+\Omega_{\rm grav}
+=
+\frac{1}{16\pi}\!
+\int_{S^2}
+\delta C^{AB}\wedge\delta N_{AB}\,d\Omega.
+\]
+
+Projecting onto the spin–1 temporal sector yields:
+\[
+\Omega_{\rm temp}
+=
+\frac{1}{16\pi}
+\int_{S^2}
+\gamma^{AB}\,
+\delta A_A\wedge\delta B_B\,d\Omega,
+\]
+where $\gamma_{AB}$ is the unit-sphere metric.
+
+This is the \emph{complete} symplectic structure of the temporal IR mode.
+
+% ------------------------------------------------------------
+\subsection{3. Canonical Poisson brackets}
+
+From $\Omega_{\rm temp}$ one obtains:
+\begin{equation}
+\{A_A(\Omega),B_B(\Omega')\}
+=
+16\pi\,\gamma_{AB}\,\delta^{(2)}(\Omega,\Omega'),
+\label{eq:ABbrackets}
+\end{equation}
+and all other equal-time brackets vanish.
+
+Thus $(A_A,B_A)$ are canonical conjugates.
+
+% ------------------------------------------------------------
+\subsection{4. Hamiltonian flows}
+
+For any functional $H[A,B]$,
+the temporal evolution generated by $H$ is:
+\[
+\delta_H A_A = \{A_A,H\} 
+= 16\pi\,\gamma_{AB}\frac{\delta H}{\delta B_B},
+\]
+\[
+\delta_H B_A = \{B_A,H\}
+= -16\pi\,\gamma_{AB}\frac{\delta H}{\delta A_B}.
+\]
+
+In particular:
+
+- the Bondi time evolution $u\mapsto u+\delta u$  
+- the modular evolution (Law VII)  
+
+are both Hamiltonian flows on this IR phase space.
+
+There is *no independent Hamiltonian for the temporal sector* —  
+all flows arise from gravitational dynamics.
+
+% ------------------------------------------------------------
+\subsection{5. Gauge and kernel structure}
+
+Because $A_A = D_A \Phi_{\rm temp}$ for some scalar potential (up to
+$\ell=1$ modes), the symplectic form is degenerate along:
+
+- $\ell=0,1$ kernel (supertranslation-like zero modes),
+- pure-gauge shifts $A_A \to A_A + D_A\Lambda$.
+
+This is the same degeneracy appearing in the full gravitational
+radiative phase space projected onto spin–1.
+
+Thus the temporal IR sector is a **quotient phase space**, not a new one.
+% ------------------------------------------------------------
+\subsection{6. Relationship to Law V (soft algebra)}
+From the bracket \eqref{eq:ABbrackets},
+the soft charge 
+\[
+Q_\Lambda = \frac{1}{8\pi}\!\int\Lambda D^A A_A\,d\Omega
+\]
+generates:
+\[
+\{Q_\Lambda,A_A\}=D_A\Lambda,
+\qquad
+\{Q_\Lambda,B_A\}=0,
+\]
+verifying:
+- closure of the soft algebra,
+- canonical nature of the symmetry,
+- consistency with the Bondi shear projection.
+
+Thus Law V and Law VI together establish:
+\[
+\text{(soft symmetry)} 
+\quad+\quad
+\text{(canonical phase space)}
+\quad+\quad
+\text{(IR boundary field)}
+\]
+as a single coherent GR structure.
+
+% ------------------------------------------------------------
+\subsection{7. Interpretation}
+
+\begin{quote}
+\emph{
+Law VI asserts that the temporal IR variables form a complete canonical
+sector of gravitational radiation.  
+Their phase space, symplectic structure, and Hamiltonian evolution are
+entirely inherited from the $(C_{AB},N_{AB})$ sector of GR.
+No extra DOFs exist; no new action is required.
+}
+\end{quote}
+
+This closes the derivation of the classical temporal kinematics.
+
+% ================================================================
+
+
+% ================================================================
+\section{Law VII: Temporal Modular Hamiltonian Law}
+\label{sec:Law7_modular}
+
+\begin{quote}
+\textbf{Law VII (Temporal Modular Hamiltonian).}
+The infrared temporal variables $(A_A,B_A)$ admit a canonical quadratic
+functional --- the \emph{Temporal Modular Hamiltonian} --- whose
+Hamiltonian flow reorganises temporal information and defines a natural
+monotonic functional of time.  
+This modular structure is inherited from the gravitational radiative
+sector and introduces no new degrees of freedom.
+\end{quote}
+
+% ------------------------------------------------------------
+\subsection{1. Definition}
+
+Given the canonical phase space of Law~VI,
+\[
+\{A_A(\Omega), B_B(\Omega')\}
+=
+16\pi\,\gamma_{AB}\,\delta^{(2)}(\Omega,\Omega'),
+\]
+define the Temporal Modular Hamiltonian:
+\begin{equation}
+K_{\rm T}[A,B]
+=
+\frac{1}{16\pi}
+\int_{S^2}
+\left(
+B^A B_A 
++ 
+\lambda\, D^A A^B D_A A_B
+\right) d\Omega ,
+\label{eq:KTdef}
+\end{equation}
+where $\lambda>0$ is a dimensionless numerical constant fixed by
+normalisation of the temporal sector.
+
+It is fully determined by the projection $A_A=-C_{AB}q^B$ and
+$B_A=\partial_u A_A=-N_{AB}q^B$ with $q^B$ the spin–1 dyad.
+
+% ------------------------------------------------------------
+\subsection{2. Modular flow equations}
+
+The Hamiltonian flow generated by $K_{\rm T}$ is:
+\[
+\partial_\tau A_A
+= 
+\{A_A, K_{\rm T}\}
+=
+B_A + \lambda\,\Delta_{S^2} A_A,
+\]
+\[
+\partial_\tau B_A
+= 
+\{B_A, K_{\rm T}\}
+=
+\lambda\,\Delta_{S^2} B_A,
+\]
+where $\Delta_{S^2}$ is the Laplacian on the sphere.
+
+This flow does \emph{not} describe physical Bondi evolution in $u$;
+it is a canonical rearrangement of IR temporal data.
+
+% ------------------------------------------------------------
+\subsection{3. Monotonicity of modular functionals}
+
+Define the temporal soft entropy:
+\begin{equation}
+S_{\rm temp}[A_A]
+=
+\frac{1}{16\pi}
+\int_{S^2} 
+A^A (-\Delta_{S^2}) A_A\,d\Omega.
+\label{eq:tempEntropy}
+\end{equation}
+
+Under modular flow:
+\[
+\frac{d}{d\tau} S_{\rm temp} \ge 0.
+\]
+
+Thus the modular parameter $\tau$ provides a natural ``arrow of time’’
+on the IR temporal phase space.
+
+% ------------------------------------------------------------
+\subsection{4. GR origin (no new DOF)}
+
+The modular Hamiltonian arises as a quadratic functional of the Bondi
+shear:
+\[
+A_A \sim \sigma^0,\qquad 
+B_A \sim \partial_u \sigma^0 = N.
+\]
+
+Therefore:
+- $K_{\rm T}$ is a \emph{boundary functional of the GR radiative data};
+- It does not introduce new fields, equations, or dynamics;
+- All modular evolution is a canonical transformation of existing GR
+degrees of freedom.
+
+% ------------------------------------------------------------
+\subsection{5. Interpretation}
+
+\begin{quote}
+\emph{
+Law VII elevates the temporal IR variables into a canonical modular
+structure analogous to modular Hamiltonians in algebraic QFT—but here it
+is entirely classical and derived from the Bondi shear.  
+It defines a natural entropy functional and a monotonic temporal
+parameter, creating an intrinsic ``IR arrow of time’’ inside GR.
+}
+\end{quote}
+
+% ================================================================
+
+
+% ================================================================
+\section{Law VIII: Temporal Relative Entropy and the Arrow of Time}
+\label{sec:Law8_entropy}
+
+\begin{quote}
+\textbf{Law VIII (Temporal Relative Entropy Law).}
+The temporal IR sector possesses a natural relative entropy functional,
+constructed from the canonical variables $(A_A,B_A)$ and the Temporal
+Modular Hamiltonian $K_{\rm T}$.  
+This relative entropy is monotonic under modular flow, establishing an
+intrinsic ``arrow of time’’ entirely within the infrared gravitational
+sector.
+\end{quote}
+
+% ---------------------------------------------------------------
+\subsection{1. Temporal phase-space distribution}
+
+Let $\Gamma_{\rm temp}$ denote the temporal IR phase space with
+coordinates $(A_A,B_A)$ and canonical symplectic measure $d\Gamma$ from
+Law~VI.  
+A coarse-grained distribution on this space is a functional
+$\rho[A,B]$ satisfying:
+\[
+\rho\ge0,\qquad 
+\int_{\Gamma_{\rm temp}} \rho\, d\Gamma = 1.
+\]
+
+This distribution represents coarse-grained information about the Bondi
+shear and news, with no new physical degrees of freedom introduced.
+
+% ---------------------------------------------------------------
+\subsection{2. Reference (modular) state}
+
+Define the ``temporal vacuum’’ distribution by:
+\begin{equation}
+\rho_0[A,B]
+\propto \exp\!\left(-K_{\rm T}[A,B]\right),
+\label{eq:rho0def}
+\end{equation}
+where $K_{\rm T}$ is the Temporal Modular Hamiltonian of Law~VII.
+
+This is the classical analogue of a Gibbs-like state generated by a
+quadratic functional of the Bondi shear.
+
+% ---------------------------------------------------------------
+\subsection{3. Temporal relative entropy}
+
+Define the temporal relative entropy of $\rho$ with respect to $\rho_0$:
+\begin{equation}
+S_{\rm rel}(\rho \| \rho_0)
+=
+\int_{\Gamma_{\rm temp}}
+\rho[A,B]\,
+\ln\!\left(\frac{\rho[A,B]}{\rho_0[A,B]}\right)
+d\Gamma.
+\label{eq:Srel}
+\end{equation}
+
+Properties:
+\[
+S_{\rm rel}(\rho\|\rho_0)\ge 0,
+\qquad 
+S_{\rm rel}=0 \iff \rho=\rho_0.
+\]
+
+Thus $\rho_0$ is the ``minimal information’’ temporal configuration.
+
+% ---------------------------------------------------------------
+\subsection{4. Monotonicity under modular flow}
+
+Let $\partial_\tau$ denote the modular flow generated by $K_{\rm T}$:
+\[
+\partial_\tau A_A 
+= \{A_A, K_{\rm T}\},\qquad
+\partial_\tau B_A 
+= \{B_A, K_{\rm T}\}.
+\]
+
+Then:
+\begin{equation}
+\frac{d}{d\tau} 
+S_{\rm rel}(\rho(\tau)\|\rho_0)
+\le 0.
+\label{eq:SrelMonotonic}
+\end{equation}
+
+Thus modular flow drives the temporal IR sector toward the reference
+distribution $\rho_0$.
+
+This is purely a statement about the phase-space geometry of Bondi shear
+projections; no dynamical propagation is implied.
+
+% ---------------------------------------------------------------
+\subsection{5. Emergent arrow of time}
+
+Since $S_{\rm rel}$ is non-increasing while the Temporal Soft Entropy
+$S_{\rm temp}$ of Law~VII is non-decreasing:
+\[
+\frac{d}{d\tau} S_{\rm rel} \le 0,
+\qquad 
+\frac{d}{d\tau} S_{\rm temp} \ge 0,
+\]
+the modular parameter $\tau$ defines an intrinsic, canonical ``IR arrow
+of time’’ inside asymptotically-flat gravity.
+
+This arrow arises not from matter thermodynamics but from the structure
+of gravitational radiation and its spin–1 temporal projection.
+
+% ---------------------------------------------------------------
+\subsection{6. Interpretation}
+
+\begin{quote}
+\emph{
+Law VIII shows that the temporal sector of general relativity contains
+its own entropic arrow of time, based purely on the infrared radiative
+shear.  
+This provides a classical gravitational counterpart to the monotonicity
+of relative entropy in quantum field theory.  
+No new fields are introduced; the law reorganises information already
+present in GR.
+}
+\end{quote}
+
+% ================================================================
+
+
+% ===================================================================
+\section{Law IX: Temporal Soft Holographic Dictionary}
+\label{sec:Law9_holography}
+
+\begin{quote}
+\textbf{Law IX (Temporal Soft Holographic Dictionary).}
+The infrared temporal fields
+\(
+\Atemp_A(u,\Omega),\;
+B_A(u,\Omega)=\partial_u\Atemp_A
+\)
+constitute a complete boundary encoding of the \emph{causally accessible}
+information contained in the temporal curvature
+\(
+\F_{\mu\nu}=2\nabla_{[\mu}\A_{\nu]}
+\)
+in the bulk.
+There exists a pair of retarded kernels $(R,R')$ such that, for any
+interior point $x$ lying in the causal past of $\mathscr I^+$,
+\[
+\boxed{
+\F_{\mu\nu}(x)
+=
+\int_{\mathscr I^+}
+\!\!\left[
+R_{\mu\nu}{}^{A}(x|u,\Omega)\,
+\Atemp_A(u,\Omega)
++
+R'_{\mu\nu}{}^{A}(x|u,\Omega)\,
+B_A(u,\Omega)
+\right]du\,d\Omega.
+}
+\]
+\end{quote}
+
+% -------------------------------------------------------------------
+\subsection{1. Bulk-to-boundary projection (Bondi limit)}
+
+The temporal connection admits the asymptotic expansion
+\[
+\A_A(u,r,\Omega)
+=
+r^{-1}\Atemp_A(u,\Omega)
++O(r^{-2}),
+\]
+where
+\(
+\Atemp_A
+\)
+is a spin--1 projection of the Bondi shear,
+$
+\Atemp_A
+= -\sigma^0 \bar m_A - \bar\sigma^0 m_A.
+$
+
+Thus the temporal IR variables contain no new degrees of freedom; they
+repackage gravitational radiation.
+
+The bulk curvature projects as:
+\[
+\Atemp_A(u,\Omega)
+=
+\int d^4x'\;
+K_A{}^{\mu\nu}(u,\Omega|x')\,
+\F_{\mu\nu}(x'),
+\]
+with $K_A{}^{\mu\nu}$ determined entirely by Bondi asymptotics.
+
+% -------------------------------------------------------------------
+\subsection{2. Boundary-to-bulk reconstruction (temporal HKLL analogue)}
+
+For any bulk observable $\mathcal{O}(x)$ that is:
+\begin{itemize}
+\item gauge-invariant under diffeomorphisms preserving Bondi gauge, and
+\item supported inside the causal domain of $\mathscr I^+$,
+\end{itemize}
+there exist kernels $(R,R')$ such that:
+\begin{equation}
+\mathcal{O}(x)
+=
+\int_{\mathscr I^+}
+\Big[
+R(x|u,\Omega)\,\Atemp_A(u,\Omega)
++
+R'(x|u,\Omega)\,B_A(u,\Omega)
+\Big]
+du\,d\Omega.
+\label{eq:bulkobsrecon}
+\end{equation}
+
+This is the temporal analogue of HKLL reconstruction in AdS, but here
+arising entirely from the $r\to\infty$ structure of asymptotically flat
+GR.
+
+% -------------------------------------------------------------------
+\subsection{3. Causal consistency: where reconstruction is allowed}
+
+Reconstruction is valid precisely when $x$ lies in the domain
+$J^{-}(\mathscr I^+)$ where:
+\[
+\Theta_{\rm T}>0,
+\qquad 
+\F_{\mu\nu}\F^{\mu\nu}<\infty,
+\]
+ensuring temporal transport is non-singular along rays reaching $x$.
+
+Points behind caustics or strong-focusing regions cannot be reconstructed,
+preserving causal and geometric consistency.
+
+% -------------------------------------------------------------------
+\subsection{4. Temporal soft two-point dictionary}
+
+Correlators of bulk temporal curvature reduce to boundary correlators:
+\[
+\langle\F_{\mu\nu}(x)\,\F_{\rho\sigma}(y)\rangle
+=
+\int_{\mathscr I^+\times \mathscr I^+}
+\!\!\!\!\!\!\!
+R_{\mu\nu}{}^{A}(x|u,\Omega)\;
+R_{\rho\sigma}{}^{B}(y|u',\Omega')
+\;
+\langle \Atemp_A(u,\Omega)\,B_B(u',\Omega')\rangle
+\,du\,d\Omega\,du'\,d\Omega'.
+\]
+
+Since $\Atemp_A$ and $B_A$ are projections of shear/news,
+\emph{all temporal bulk correlators are gravitational shear correlators
+in disguise}.
+
+% -------------------------------------------------------------------
+\subsection{5. Interpretation}
+
+\begin{quote}
+\emph{
+Law~IX establishes that the temporal sector provides a genuine soft
+holographic channel in asymptotically flat gravity.  
+No new fields are introduced; the dictionary emerges from the Bondi
+expansion and the causal structure of $\A_\mu$ derived from vorticity.
+The temporal soft data serve as boundary ``coordinates’’ for the part of
+the bulk curvature that is operationally accessible.
+}
+\end{quote}
+
+% ===================================================================
+
+
+% ===================================================================
+\section{Law X: Temporal Soft Noether--Bianchi Identity}
+\label{sec:Law10_Bianchi}
+
+\begin{quote}
+\textbf{Law X (Temporal Soft Noether--Bianchi Identity).}
+The temporal soft symmetry, its associated charge $Q_\Lambda$, and
+the corresponding memory effect follow necessarily from:
+\[
+\nabla_{[\mu} R_{\nu\rho]\sigma}{}^{\tau} = 0
+\quad\text{(Bianchi identity)}
+\qquad\text{and}\qquad
+G_{\mu\nu}=8\pi T_{\mu\nu}.
+\]
+In particular, the quantity
+\[
+J^\mu_{\rm T}(\Lambda) := \nabla_\nu\!\left( \F^{\mu\nu}\Lambda \right),
+\qquad
+\F_{\mu\nu}=2\nabla_{[\mu}\A_{\nu]},
+\]
+defines a \emph{conserved current}:
+\[
+\boxed{
+\nabla_\mu J^\mu_{\rm T} = 0 ,
+}
+\]
+whose flux to $\mathscr I^+$ reproduces temporal soft charge
+conservation and memory.
+\end{quote}
+
+% -------------------------------------------------------------------
+\subsection{1. The temporal current from the curvature identity}
+
+Use the commutator
+\[
+\nabla_{[\mu}\nabla_{\nu]}\A_{\rho}
+=
+\frac12 R_{\mu\nu\rho}{}^{\sigma}\A_{\sigma},
+\]
+with $\A_\mu = (2\alpha)^{-1}\omega_{\nu\mu}U^\nu$.
+Contracting appropriately and integrating by parts yields the identity:
+\[
+\nabla_\mu\left( \F^{\mu\nu}\Lambda \right)
+=
+\F^{\mu\nu} \nabla_\mu\Lambda
++
+\Lambda \nabla_\mu\F^{\mu\nu}.
+\]
+
+Einstein’s equations imply
+\(
+\nabla_\mu\F^{\mu\nu}
+\)
+projects onto combinations of matter fluxes and shear derivatives.  
+The Bianchi identity ensures all such contributions combine to a total
+derivative.
+
+Therefore:
+\[
+\nabla_\mu J^\mu_{\rm T}=0,
+\]
+independently of the congruence gauge or Bondi frame chosen.
+
+% -------------------------------------------------------------------
+\subsection{2. Integration to future null infinity}
+
+Integrating the conservation law over a region $\mathcal{N}$ bounded by
+cuts $\mathcal{C}_{u_1},\mathcal{C}_{u_2}\subset \mathscr I^+$:
+\[
+0
+=
+\int_{\mathcal{N}}\nabla_\mu J^\mu_{\rm T}
+=
+\int_{\mathcal{C}_{u_2}} \!J^\mu_{\rm T} d\Sigma_\mu
+-
+\int_{\mathcal{C}_{u_1}} \!J^\mu_{\rm T} d\Sigma_\mu.
+\]
+
+The leading term of $J^\mu_{\rm T}$ near $\mathscr I^+$ is:
+\[
+J^u_{\rm T}
+=
+\frac{1}{8\pi}\,
+\Lambda\,\partial_u\!\left(
+D^A\Atemp_A
+\right)
++O(r^{-1}),
+\]
+so one obtains the **soft charge conservation law**:
+\[
+\boxed{
+Q_\Lambda(u_2)-Q_\Lambda(u_1)
+=
+\frac{1}{8\pi}\int_{u_1}^{u_2}\!\!\!du
+\int_{S^2}\Lambda\,\partial_u A\,d\Omega .
+}
+\]
+
+Using $B_A=\partial_u\Atemp_A$ gives the **temporal memory formula**:
+\[
+\Delta A(\Omega)
+=
+-\int_{u_1}^{u_2} B(u,\Omega)\,du.
+\]
+
+% -------------------------------------------------------------------
+\subsection{3. Interpretation and necessity}
+
+\begin{quote}
+\emph{
+Law~X shows that temporal soft symmetry, soft charge conservation,
+and temporal memory are not optional additions to GR.
+They arise necessarily from the Bianchi identity and the 
+vorticity-defined temporal connection.
+Any consistent treatment of the Bondi asymptotic structure must contain
+the temporal soft sector.
+}
+\end{quote}
+
+\[
+\boxed{
+\text{No temporal soft symmetry} 
+\;\Longrightarrow\;
+\text{Bianchi identity violation}.
+}
+\]
+
+This makes the temporal soft sector as fundamental as the BMS
+supertranslation symmetry of the spin–2 sector.
+
+% ===================================================================
+
+
+% ===================================================================
+\section{Law XI: Temporal Hamilton--Jacobi Principle}
+\label{sec:Law11_HJ}
+
+\begin{quote}
+\textbf{Law XI (Temporal Hamilton--Jacobi Principle).}
+There exists a boundary functional
+\[
+S_{\rm temp}[C_{AB},\Atemp_A]
+\]
+defined on $\mathscr I^+$ such that:
+
+1. Its functional derivative with respect to the Bondi shear produces  
+   the temporal soft charge density:
+\[
+\boxed{
+\frac{\delta S_{\rm temp}}{\delta \sigma^0(u,\Omega)}
+=
+\frac{1}{8\pi}\,D^A \Atemp_A(u,\Omega)
+}
+\]
+
+2. Its on–shell variation between two scattering vacua reproduces the  
+   temporal memory:
+\[
+\boxed{
+\delta S_{\rm temp}\big|_{\rm on\text{-}shell}
+=
+\Delta Q_\Lambda
+}
+\]
+
+Thus, temporal memory is the Hamilton–Jacobi variation of a boundary 
+action for the derived temporal connection.
+\end{quote}
+
+% -------------------------------------------------------------------
+\subsection{1. Construction of the temporal Hamilton--Jacobi functional}
+
+Because $\Atemp_A$ is a spin--1 projection of the Bondi shear 
+\[
+\Atemp_A = -\sigma^0 \bar m_A - \bar\sigma^0 m_A,
+\]
+the simplest scalar functional consistent with the symmetry and 
+dimensional analysis is:
+\begin{equation}
+S_{\rm temp}
+:=
+\frac{1}{8\pi}
+\int_{\mathscr I^+}
+\Atemp_A D^A \sigma^0
+\;du\,d\Omega .
+\label{eq:Stemp-def}
+\end{equation}
+
+This is a pure boundary term and introduces *no new degrees of freedom*,  
+consistent with Axiom~0.
+
+% -------------------------------------------------------------------
+\subsection{2. Functional derivative and soft charge}
+
+Varying \eqref{eq:Stemp-def} with respect to $\sigma^0$ gives:
+\[
+\delta S_{\rm temp}
+=
+\frac{1}{8\pi}
+\int_{\mathscr I^+}
+\delta\sigma^0\, D^A\Atemp_A\,du\,d\Omega,
+\]
+so:
+\[
+\frac{\delta S_{\rm temp}}{\delta \sigma^0}
+=
+\frac{1}{8\pi} D^A\Atemp_A,
+\]
+which is precisely the \emph{temporal soft charge density}.
+
+Thus:
+\[
+Q_\Lambda
+=
+\int_{S^2}\Lambda \frac{\delta S_{\rm temp}}{\delta \sigma^0} d\Omega .
+\]
+
+% -------------------------------------------------------------------
+\subsection{3. On--shell variation and memory}
+
+On shell, the Bondi news obeys:
+\[
+\partial_u \sigma^0 = N,
+\qquad
+\partial_u \Atemp_A = B_A.
+\]
+
+For scattering between early and late vacua, 
+the on--shell variation becomes:
+\[
+\delta S_{\rm temp}\big|_{\rm on\text{-}shell}
+=
+\frac{1}{8\pi}
+\int_{S^2}
+\Lambda\,\Delta\!\left(D^A\Atemp_A\right)
+d\Omega ,
+\]
+which equals the temporal memory effect:
+\[
+\Delta A(\Omega)
+=
+- \int B(u,\Omega)\,du .
+\]
+
+Therefore:
+\[
+\boxed{
+\delta S_{\rm temp}\big|_{\rm on\text{-}shell}
+=
+Q_\Lambda(u_f) - Q_\Lambda(u_i)
+}
+\]
+
+% -------------------------------------------------------------------
+\subsection{4. Interpretation}
+
+\begin{quote}
+\emph{
+Law~XI reveals that temporal memory, flux, and soft charge conservation
+can all be derived from a single boundary functional.  
+The temporal sector therefore possesses a variational origin analogous to
+the Hamilton--Jacobi treatment of classical mechanics and holographic
+renormalisation.
+}
+\end{quote}
+
+This ties together Laws I–X:
+- Law I: constraint  
+- Law II: evolution  
+- Law III: flux  
+- Law IV–V: symmetry + algebra  
+- Law VI–VIII: canonical + entropic structure  
+- Law IX: holography  
+- Law X: conservation (Bianchi)  
+- **Law XI: variational principle**
+
+Together they complete the classical temporal sector.
+
+% ===================================================================
+
+
+% ================================================================
+\section{Law XII: The Temporal Causal Wedge}
+\label{sec:Law12_TCW}
+
+\begin{quote}
+\textbf{Law XII (Temporal Causal Wedge).}
+For any asymptotically-flat black-hole spacetime, the temporal data on
+$\mathscr I^+$ --- equivalently the spin--1 projection of the Bondi shear
+$\Atemp_A$ and its news $B_A$ --- determines a \emph{boundary-defined, causally accessible interior region}:
+\[
+\boxed{
+\mathcal{W}_{\rm TC}(u,\Omega)
+=
+J^{-}\!\Big(\gamma_{\rm temp}(u,\Omega)\Big)
+\cap
+\mathcal{M}_{\rm BH},
+}
+\]
+called the \emph{Temporal Causal Wedge}.
+All interior relational observables supported in $\mathcal{W}_{\rm TC}$
+are reconstructible from the boundary temporal fields via retarded 
+integral kernels, while no information outside $\mathcal{W}_{\rm TC}$ 
+is accessible.
+
+\end{quote}
+
+% ----------------------------------------------------------------
+\subsection{1. Temporal congruence and canonical interior curve}
+
+Temporal parallel transport defines a preferred interior trajectory
+through:
+\begin{equation}
+U^\mu_{\rm temp}\,\nabla_\mu U^\nu_{\rm temp}
+=
+\F^{\nu}{}_{\mu}\,U^\mu_{\rm temp},
+\label{eq:temp-geodesic}
+\end{equation}
+where the temporal curvature $\F_{\mu\nu}=2\nabla_{[\mu}\A_{\nu]}$ is 
+a derived, non-dynamical functional of the Bondi shear (Axiom~0).
+
+The integral curve passing through $(u,\Omega)$ at $\mathscr I^+$ is
+denoted $\gamma_{\rm temp}(u,\Omega)$.
+It defines the ``temporal anchor'' of bulk reconstruction.
+
+% ----------------------------------------------------------------
+\subsection{2. Definition of the temporal causal wedge}
+
+Given $\gamma_{\rm temp}(u,\Omega)$, the wedge is:
+\begin{equation}
+\mathcal{W}_{\rm TC}(u,\Omega)
+=
+J^{-}\!\left(\gamma_{\rm temp}(u,\Omega)\right)
+\cap
+\mathcal{M}_{\rm BH}.
+\end{equation}
+
+A bulk point $x$ lies in $\mathcal{W}_{\rm TC}$ iff:
+\[
+x \in J^{-}(\gamma_{\rm temp})
+\quad\text{and}\quad
+x \text{ is interior to the horizon}.
+\]
+
+This is the analogue of:
+- the causal wedge in AdS/CFT,  
+- the causal shadow region in null geometry,  
+but defined using the \emph{temporal} congruence rather than null 
+geodesics or extremal surfaces.
+
+% ----------------------------------------------------------------
+\subsection{3. Reconstruction inside the wedge}
+
+Any relational bulk observable $\mathcal{O}(x)$ supported in
+$\mathcal{W}_{\rm TC}$ can be reconstructed via:
+\begin{equation}
+\mathcal{O}(x)
+=
+\int_{\mathscr I^+}\!
+\big[
+R(x|u,\Omega)\,\Atemp_A
++
+R'(x|u,\Omega)\,B_A
+\big]
+\,du\,d\Omega ,
+\label{eq:recon-TCW}
+\end{equation}
+where $R$ and $R'$ are retarded kernels determined entirely by the
+background spacetime.
+
+Crucially:
+- **no temporal field is introduced in the bulk**,  
+- the reconstruction is purely kinematical,  
+- and consistency follows from the Bondi constraint structure.
+
+% ----------------------------------------------------------------
+\subsection{4. Boundary accessibility conditions}
+
+A point $x$ is reconstructible iff the temporal congruence does not
+focus before reaching $x$:
+\begin{equation}
+\Theta_{\rm T} > 0,
+\qquad
+\F_{\mu\nu}\F^{\mu\nu} < \infty,
+\label{eq:TCW-access}
+\end{equation}
+ensuring the temporal flow remains regular.
+
+These conditions are inherited from the Raychaudhuri-type behaviour of
+the derived temporal connection (Law~II).
+
+% ----------------------------------------------------------------
+\subsection{5. Interpretation}
+
+\begin{quote}
+\emph{
+Law~XII states:  
+\textbf{the interior region of a black hole that is reconstructible from the asymptotic temporal soft sector is precisely the Temporal Causal Wedge}.  
+The wedge is determined not by new fields, but by the derived temporal
+connection encoded in the Bondi shear.
+}
+\end{quote}
+
+This provides:
+- the starting point for temporal interior reconstruction (Law XIII),  
+- constraints on black-hole information flow,  
+- a boundary characterization of which interior points are observable.
+
+% ================================================================
+
+
+% ================================================================
+\section{Inter-Law Structural Summary}
+\label{sec:interlaw_summary}
+
+The twelve Laws developed above constitute a complete structural
+framework for the classical temporal sector of general relativity.
+Because the temporal connection $\A_\mu$ is a derived functional of
+$(g_{\mu\nu},U^\mu)$, the resulting Laws do not extend GR but rather
+organise existing geometric information into a coherent subsystem.
+This section summarises their interrelations.
+
+% ---------------------------------------------------------------
+\subsection{Constraint--Evolution Structure (Laws I–II)}
+
+Law~I provides a constraint equation for $D^A\A_A$ on spacelike or
+null hypersurfaces.  
+Law~II complements this with a Raychaudhuri-type evolution equation for
+the temporal expansion $\Theta_{\rm T}=\nabla_\mu\A^\mu$.
+Together they define the instantaneous and dynamical relations among the
+temporal curvature, vorticity, shear, and Ricci tensor.
+
+This mirrors the familiar Hamiltonian--Raychaudhuri pair for $U^\mu$,
+but applied to the derived temporal congruence.
+
+% ---------------------------------------------------------------
+\subsection{UV--IR and Soft Structure (Laws III–VI)}
+
+Laws~III–VI concern the infrared temporal mode 
+$\Atemp_A$ and its news $B_A$ at $\mathscr I^+$.
+
+\begin{itemize}
+\item \textbf{Law~III} gives the flux-balance relation for temporal
+soft charges, relating temporal memory to the integrated temporal news
+and matter flux.
+\item \textbf{Law~IV} identifies the soft symmetry
+$\delta_\Lambda A_A = D_A\Lambda$, inherited from E-mode variations of
+Bondi shear.
+\item \textbf{Law~V} shows that the corresponding Noether charge
+$Q_\Lambda$ generates this symmetry and that the soft sector forms an
+Abelian canonical algebra.
+\item \textbf{Law~VI} elevates $(A_A,B_A)$ to a complete infrared phase
+space obtained by projecting the Einstein--Hilbert symplectic form.
+\end{itemize}
+
+These four Laws demonstrate the entire IR temporal sector is contained in
+the gravitational radiative phase space.  
+It is not new physics but a refined basis for familiar soft-graviton
+structure.
+
+% ---------------------------------------------------------------
+\subsection{Canonical and Entropic Structure (Laws VII–VIII)}
+
+Laws~VII and VIII establish canonical and entropic functionals:
+a Temporal Modular Hamiltonian $K_{\rm T}$ and a relative entropy
+$S_{\rm rel}$.
+
+\begin{itemize}
+\item The modular Hamiltonian generates canonical flows within the
+derived temporal phase space, organising IR information without
+introducing dynamics.
+\item The temporal entropy and relative entropy are monotonic under
+modular flow, producing an intrinsic IR arrow of time.
+\end{itemize}
+
+This subsystem parallels algebraic quantum field theory, but remains
+purely classical and derived from shear/news.
+
+% ---------------------------------------------------------------
+\subsection{Holography and Conservation (Laws IX–XI)}
+
+Laws~IX--XI provide a soft holographic dictionary, a conserved temporal
+current, and a Hamilton--Jacobi variational principle.
+
+\begin{itemize}
+\item \textbf{Law IX} reconstructs temporal curvature in the bulk from
+boundary temporal data.
+\item \textbf{Law X} shows that soft charge conservation and memory
+follow directly from the Bianchi identity and Einstein’s equations.
+\item \textbf{Law XI} constructs a boundary functional whose variation
+gives the temporal soft charge density and whose on-shell difference
+yields the memory.
+\end{itemize}
+
+These unify soft symmetry, flux conservation, and holography under a
+single geometric structure.
+
+% ---------------------------------------------------------------
+\subsection{Interior Access and Reconstruction (Law XII)}
+
+Law~XII identifies a boundary-defined region---the \emph{Temporal Causal
+Wedge}---inside which interior observables are reconstructible from
+temporal soft data.  
+This provides the bridge to Pillar~II, where black-hole interior
+structure is explored.
+
+% ---------------------------------------------------------------
+\subsection{Overall Structure}
+
+The twelve Laws thus assemble into the following architecture:
+
+\[
+\boxed{
+\begin{aligned}
+&\text{Constraint} + \text{Evolution} \\
+&\qquad\Downarrow \\
+&\text{Flux} + \text{Soft Algebra} + \text{Phase Space} \\
+&\qquad\Downarrow \\
+&\text{Entropy} + \text{Holography} + \text{Variational Principle} \\
+&\qquad\Downarrow \\
+&\text{Interior Reconstruction}
+\end{aligned}
+}
+\]
+
+
+Every component is a consequence of the same derived temporal connection,
+with no extension of GR’s degrees of freedom.
+
+% ================================================================
+
+
+% ================================================================
+\section{Discussion: Physical Interpretation and Conceptual Significance}
+\label{sec:discussion}
+
+The temporal sector developed in this work represents a reorganisation
+of general relativity’s infrared and kinematical structure, rather than a
+modification of the theory.  
+Its central object, the temporal connection
+\(
+\A_\mu = (2\alpha)^{-1}\omega_{\nu\mu}U^\nu,
+\)
+is a derived functional of the observer congruence and the spacetime
+metric.  
+The twelve Laws of the Classical Temporal Sector therefore provide
+interpretive and structural clarity without altering the content of GR.
+
+This section summarises the conceptual role of temporal geometry and the
+significance of each structural component.
+
+% ---------------------------------------------------------------
+\subsection{Operational time transport and vorticity}
+
+In general relativity, ``time'' is defined operationally by the
+accumulated proper time along a worldline.  
+Two observers following different timelike curves do not generally agree
+on elapsed time, and transporting a clock standard around a closed loop
+leads to desynchronisation governed by the vorticity tensor
+$\omega_{\mu\nu}$.
+
+The temporal connection encodes this desynchronisation in a covariant,
+gauge-independent manner.  
+Its holonomy measures the mismatch between transported proper times.
+This elevates vorticity from a local property of a congruence to a
+boundary-accessible quantity with global implications.
+
+% ---------------------------------------------------------------
+\subsection{Temporal curvature as a measure of non-integrability}
+
+The temporal curvature $\F_{\mu\nu}=2\nabla_{[\mu}\A_{\nu]}$ measures the 
+failure of $\A_\mu$ to be integrable, i.e.\ the failure of global
+synchronisation to exist.
+
+Although $\F_{\mu\nu}$ is constructed entirely from $(g_{\mu\nu},U^\mu)$,
+its projection to $\mathscr I^+$ determines soft charges, memory, and
+holographic kernels.  
+Thus, the curvature of temporal transport carries physical information
+restricted not to matter fields or propagating modes, but to the
+nonlocal structure of time itself.
+
+% ---------------------------------------------------------------
+\subsection{The IR temporal mode: a reorganisation of the Bondi shear}
+
+One of the central results is that the infrared temporal mode
+\[
+\Atemp_A = -\sigma^0\bar m_A - \bar\sigma^0 m_A
+\]
+is a spin–1 projection of the Bondi shear.  
+It contains no new degrees of freedom, yet it isolates the part of the
+shear that governs temporal memory and temporal soft symmetry.
+
+This projection disentangles time-related information from the full
+spin–2 gravitational wave content, enabling a focused analysis of how
+time is encoded in asymptotic geometry.
+
+% ---------------------------------------------------------------
+\subsection{Soft symmetry and canonical structure}
+
+The temporal soft transformation
+\(
+\delta_\Lambda A_A = D_A\Lambda
+\)
+is a redundancy among IR gravitational vacua.
+It leaves the Bondi news invariant and acts only on the memory sector.
+
+Laws~V and VI show that this symmetry is canonical, generated by a
+Wald--Zoupas charge on the inherited symplectic structure.  
+Thus the temporal soft symmetry is not a new gauge symmetry: it is the
+spin–1 shadow of known large-gauge transformations in GR.
+
+This canonical structure plays a dual role:
+\begin{itemize}
+\item It provides observables that are sensitive to memory.
+\item It identifies directions in phase space along which the symplectic
+form is degenerate (pure IR shifts).
+\end{itemize}
+
+% ---------------------------------------------------------------
+\subsection{Entropic and modular aspects}
+
+Laws~VII and VIII reveal a modular structure in the temporal IR sector.
+Although $K_{\rm T}$ is not a physical Hamiltonian, its flow reorganises
+IR data and defines a monotonic entropy functional.
+
+This leads to an ``intrinsic arrow of time’’:
+\[
+\frac{d}{d\tau} S_{\rm temp} \ge 0,
+\qquad
+\frac{d}{d\tau} S_{\rm rel} \le 0,
+\]
+mirroring properties of relative entropy in algebraic QFT.
+
+This emergence of temporal directionality is noteworthy:
+it does not arise from thermodynamics, matter interactions, or quantum
+effects—only from the structure of classical GR’s infrared shear.
+
+% ---------------------------------------------------------------
+\subsection{Holography without new fields}
+
+Laws~IX–XI establish a boundary-to-bulk dictionary for the temporal
+sector.  
+Bulk temporal curvature can be reconstructed from temporal soft fields
+via retarded kernels, and soft charges correspond to fluxes derived from
+the Bianchi identity.
+
+This provides a ``soft holography’’ that is entirely classical and GR-based:
+\begin{itemize}
+\item bulk information accessible from $\mathscr I^+$ is encoded in the
+temporal shear projection,
+\item soft charge conservation is equivalent to a curvature identity,
+\item the memory effect is the Hamilton--Jacobi variation of a boundary
+functional.
+\end{itemize}
+
+This holography reflects the causal and geometric role of temporal
+transport: only regions where the temporal flow remains regular are
+reconstructible.
+
+% ---------------------------------------------------------------
+\subsection{Temporal Causal Wedge}
+
+The final Law identifies the subset of the black-hole interior that is
+accessible via temporal soft data.
+
+The resulting Temporal Causal Wedge:
+\[
+\mathcal{W}_{\rm TC}
+=
+J^{-}(\gamma_{\rm temp})
+\cap
+\mathcal{M}_{\rm BH},
+\]
+is a causally-defined region determined not by null geodesics or trapped
+surfaces, but by the behaviour of the derived temporal congruence.
+
+This structure naturally leads into Pillar~II, where interior
+reconstruction and the fate of temporal curvature near horizons are
+analysed.
+
+% ---------------------------------------------------------------
+\subsection{Conceptual synthesis}
+
+The temporal sector reveals several deep principles:
+\begin{itemize}
+\item \textbf{Time is geometric and relational}: it derives from congruence
+kinematics and curvature, not from a fundamental field.
+\item \textbf{Temporal information is holographic}: asymptotic shear
+encodes all causally accessible temporal curvature.
+\item \textbf{Temporal structure is inherently infrared}: the entire
+sector emerges from zero-frequency gravitational data.
+\item \textbf{The arrow of time is encoded in the IR}: monotonic
+functionals arise from canonical flows, without invoking quantum effects.
+\end{itemize}
+
+These insights place the classical temporal sector on the same footing
+as the well-studied BMS structure of gravitational radiation, but with a
+distinct physical interpretation tied to operational time transport.
+
+% ================================================================
+
+
+% ================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+This work has presented a complete and self-contained formulation of the
+\emph{Classical Temporal Sector} of general relativity.  
+The temporal connection 
+\(
+\A_\mu = (2\alpha)^{-1}\omega_{\nu\mu}U^\nu
+\),
+derived from vorticity and congruence kinematics, provides a covariant
+encoding of proper-time transport without introducing any new degrees of
+freedom.  
+The twelve Temporal Laws developed here reveal that temporal geometry
+forms a closed, holographically accessible, canonically organised
+subsystem of general relativity.
+
+The principal achievements of this Pillar are:
+
+\begin{itemize}
+\item Establishing a \textbf{constraint–evolution} structure  
+      (Laws~I–II) analogous to the Hamiltonian and Raychaudhuri
+      equations, but acting on the derived temporal connection.
+
+\item Demonstrating \textbf{conservation and flux laws} (Laws~III and X)
+      grounded in the Bondi expansion and the Bianchi identity, showing
+      that temporal soft charges and memory are necessary features of
+      asymptotically-flat gravity.
+
+\item Identifying the \textbf{temporal soft symmetry} (Law~IV) and its
+      \textbf{canonical algebra} (Laws~V–VI), inherited directly from the
+      gravitational radiative phase space.
+
+\item Constructing the \textbf{modular and entropic structure}
+      (Laws~VII–VIII), revealing a monotonic ``IR arrow of time’’
+      intrinsic to the spin–1 projection of the shear.
+
+\item Establishing a complete \textbf{soft holographic dictionary}
+      (Law~IX) enabling causal boundary reconstruction of temporal
+      curvature in the bulk, without new fields.
+
+\item Showing that temporal memory arises as a \textbf{Hamilton--Jacobi
+      variation} of a boundary functional (Law~XI), unifying symmetry,
+      flux, and variational principles.
+
+\item Introducing the \textbf{Temporal Causal Wedge} (Law~XII), the
+      region of a black-hole interior that is reconstructible from
+      temporal soft data at null infinity.
+\end{itemize}
+
+Together, these results demonstrate that the temporal sector provides a
+precise and powerful organisational framework for properties of time in
+general relativity.  
+Although the sector introduces no new dynamics, it exposes geometric,
+holographic, and entropic features that remain hidden in the standard
+$1{+}3$ and Bondi formulations.
+
+\paragraph{Outlook toward Pillar~II.}
+The Temporal Causal Wedge introduced here is the natural bridge to 
+the next stage of the Temporal Rasa Compendium.  
+Pillar~II extends these ideas to black-hole interiors, where the derived
+temporal curvature interacts with horizon geometry, soft hair, memory,
+and interior reconstruction.  
+The twelve laws of the Classical Temporal Sector form the indispensable
+foundation for these developments.
+
+\begin{quote}
+\emph{
+The temporal sector is not an extension of GR.  
+It is GR, reorganised to reveal the deep geometric structure underlying
+operational time, infrared symmetry, and causal reconstruction.
+}
+\end{quote}
+
+% ================================================================
+
+
+% ================================================================
+\begin{thebibliography}{99}
+
+\bibitem{PaperI}
+Shivaraj~S.~Galagali,
+``Operational Time Geometry in General Relativity,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17813825}{doi:10.5281/zenodo.17813825}.
+
+\bibitem{PaperII}
+Shivaraj~S.~Galagali,
+``Operational Reconstruction of Local Spacetime Geometry,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17833292}{doi:10.5281/zenodo.17833292}.
+
+\bibitem{PaperIII}
+Shivaraj~S.~Galagali,
+``Newman--Penrose Formulation of the Temporal Connection,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17842271}{doi:10.5281/zenodo.17842271}.
+
+\bibitem{PaperIV}
+Shivaraj~S.~Galagali,
+``Temporal Soft Charges and Memory in Asymptotically Flat Gravity,'' (2025).
+\href{https://doi.org/10.5281/zenodo.17849331}{doi:10.5281/zenodo.17849331}.
+
+\bibitem{PaperV}
+Shivaraj~S.~Galagali,
+``The Ultraviolet Temporal Sector of General Relativity'' (2025).
+\href{https://doi.org/10.5281/zenodo.17859446}{doi:10.5281/zenodo.17859446}.
+
+\bibitem{Bondi1962}
+H.~Bondi, M.~G.~J.~van der Burg, and A.~W.~K.~Metzner,
+``Gravitational waves in general relativity VII. Waves from isolated axisymmetric systems,''
+\emph{Proc. R. Soc. Lond. A} \textbf{269}, 21 (1962).
+
+\bibitem{Sachs1962}
+R.~Sachs,
+``Gravitational waves in general relativity VIII. Waves in asymptotically flat space-times,''
+\emph{Proc. R. Soc. Lond. A} \textbf{270}, 103 (1962).
+
+\bibitem{Strominger2014}
+A.~Strominger,
+``On BMS invariance of gravitational scattering,''
+\emph{JHEP} \textbf{07}, 152 (2014),
+arXiv:1312.2229 [hep-th].
+
+\bibitem{WaldZoupas2000}
+R.~M.~Wald and A.~Zoupas,
+``A general definition of conserved quantities in general relativity and other theories of gravity,''
+\emph{Phys. Rev. D} \textbf{61}, 084027 (2000).
+
+\bibitem{Raychaudhuri1955}
+A.~Raychaudhuri,
+``Relativistic cosmology. I,''
+\emph{Phys. Rev.} \textbf{98}, 1123 (1955).
+
+\bibitem{Ashtekar1981}
+A.~Ashtekar,
+\emph{Asymptotic Quantization},
+Monographs and Textbooks in Physical Science, Bibliopolis (1987).
+
+\bibitem{NewmanPenrose1962}
+E.~Newman and R.~Penrose,
+``An approach to gravitational radiation by a method of spin coefficients,''
+\emph{J. Math. Phys.} \textbf{3}, 566 (1962).
+
+\bibitem{HollandsIshibashiWald}
+S.~Hollands, A.~Ishibashi, and R.~M.~Wald,
+``BMS supertranslations and memory in four and higher dimensions,''
+\emph{Class. Quant. Grav.} \textbf{34}, 155005 (2017).
+
+\end{thebibliography}
+% ================================================================
+
+\end{document}
+
+
