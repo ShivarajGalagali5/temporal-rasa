@@ -145,7 +145,7 @@ This structure ensures long-term maintainability, reproducibility, and collabora
 
 ## **Roadmap (2025–2027)**
 
-The Temporal Rasa program is planned to expand into **20–100 papers**, covering lot.
+The Temporal Rasa program is planned to expand into multiple papers and domains.
 
 ---
 
@@ -160,19 +160,12 @@ If you use or reference this work, please cite the relevant paper(s):
 
 * **Zenodo:** Versioned releases with DOIs
 * **OSF:** Project hub, metadata, and supplements
-* **ResearchGate:** Public visibility for research community
 * **GitHub:** Version control, LaTeX, derivations, development
 
 ---
 
 ## **License**
-
-Choose one based on your preference:
-
-* **CC BY 4.0** *(recommended — maximizes citation & visibility)*
-* or **CC BY-NC 4.0** *(restricts commercial reuse)*
-
-Tell me which one you want and I'll add it.
+* **CC BY 4.0**
 
 ---
 
