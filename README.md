@@ -10,28 +10,63 @@
 
 ## **Overview**
 
-**Temporal Rasa** is a research program that develops a unified, operational formulation of **time in general relativity**, grounded in measurable physical quantities:
+
+The **Temporal Rasa** research program develops a unified, operational formulation of **time in general relativity**, grounded in measurable observables such as:
 
 * clock transport
 * reference congruences
 * vorticity and temporal holonomy
 * photon frequency transport
-* asymptotic shear and soft structure
-* temporal curvature and response
+* asymptotic gravitational shear
+* soft charges and memory
+* temporal curvature, dynamics, and response
 
-The program constructs a **UV/IR-complete temporal sector of gravity**, connecting local operational geometry to asymptotic soft limits and gravitational memory.
+The program now proceeds at two scales:
 
-The repository contains all LaTeX sources, derivations, diagrams, supplemental computations, and data associated with the Temporal Rasa paper series.
+### **(1) Paper Series (I–V so far)**
+
+Develops operational GR time, reconstruction, the NP temporal connection, soft structure, and UV sector.
+
+### **(2) Pillar Papers**
+
+High-level syntheses that consolidate many papers into a coherent segment of the theory.
+
+**Pillar I: Classical Temporal Geometry in General Relativity**
+Unifies Papers I–V and completes the classical temporal geometric structure.
 
 ---
 
-## **Series Structure (Papers I–V)**
+
+## **Compendium Structure**
+
+## **Pillar I — Classical Temporal Geometry in General Relativity**
+
+*(Temporal Rasa Compendium, Part I)*
+
+This foundational paper synthesizes and unifies the results of Papers I–V, and extends them into a closed system of **twelve structural laws** governing:
+
+* temporal connection
+* temporal curvature
+* variational principle
+* symplectic / phase-space structure
+* IR soft sector
+* UV temporal sector
+* modular flow
+* temporal entropy
+* temporal holography
+
+It defines the full **classical temporal geometry** of general relativity.
+
+**DOI:** [https://doi.org/10.5281/zenodo.17906295](https://doi.org/10.5281/zenodo.179062951)
+
+## **Series Structure**
 
 ### **Paper I — Operational Time Geometry in General Relativity**
 
 Defines the operational lapse (\alpha=-n_\mu U^\mu), derives exact evolution laws, corrected photon transport, and temporal holonomy.
 
 **DOI:** [https://doi.org/10.5281/zenodo.17873031](https://doi.org/10.5281/zenodo.17873031)
+
 
 ---
 
@@ -74,15 +109,19 @@ Develops temporal curvature, Raychaudhuri-type evolution, UV–IR balance laws, 
 ```
 Temporal-Rasa/
 │
+├── pillar-papers/
+│   └── Pillar-I/
+│
 ├── papers/
-│   ├── Paper-I/
-│   ├── Paper-II/
-│   ├── Paper-III/
-│   ├── Paper-IV/
-│   └── Paper-V/
+│   ├── Paper-I/   # Operational Time Geometry
+│   ├── Paper-II/  # Reconstruction of Geometry
+│   ├── Paper-III/ # NP Temporal Connection
+│   ├── Paper-IV/  # Temporal Soft Charges & Memory
+│   ├── Paper-V/   # Ultraviolet Temporal Sector
+│   └── ...
 │
 ├── latex/
-│   ├── macros/              # Shared LaTeX commands
+│   ├── macros/
 │   ├── figures/
 │   └── templates/
 │
@@ -106,28 +145,7 @@ This structure ensures long-term maintainability, reproducibility, and collabora
 
 ## **Roadmap (2025–2027)**
 
-The Temporal Rasa program is planned to expand into **20–100 papers**, covering:
-
-### **Phase II — Dynamics and Horizons (Papers VI–X)**
-
-* Temporal dynamics in black hole spacetimes
-* Horizon temporal holonomy
-* Temporal contributions to quasi-local energy
-* Frame-dependent temporal charges
-
-### **Phase III — Information and Quantum Gravity (Papers XI–XV)**
-
-* Temporal information channels
-* Temporal entanglement
-* Operational quantum reference frames
-* Soft–temporal dualities
-
-### **Phase IV — Problem of Time (Beyond Paper XV)**
-
-* Temporal coarse-graining
-* Temporal modular flow
-* Cosmological temporal sectors
-* Beyond-GR extensions
+The Temporal Rasa program is planned to expand into **20–100 papers**, covering lot.
 
 ---
 
